@@ -49,9 +49,15 @@ const char* MP4GetTrackType(
     MP4TrackId    trackId );
 
 MP4V2_EXPORT
+uint32_t MP4GetTrackNumberOfSampleDescriptions(
+    MP4FileHandle hFile,
+    MP4TrackId    trackId);
+
+MP4V2_EXPORT
 const char* MP4GetTrackMediaDataName(
     MP4FileHandle hFile,
-    MP4TrackId    trackId );
+    MP4TrackId    trackId,
+    uint32_t      index);
 
 /*
  * MP4GetTrackMediaDataOriginalFormat is to be used to get the original

@@ -111,7 +111,8 @@ static char* PrintAudioInfo(
     uint8_t type = 0;
     const char *media_data_name = NULL;
 
-    media_data_name = MP4GetTrackMediaDataName(mp4File, trackId);
+    // FIXME
+    media_data_name = MP4GetTrackMediaDataName(mp4File, trackId, 0);
 
     if (media_data_name == NULL) {
         typeName = "Unknown - no media data name";
@@ -313,7 +314,8 @@ static char* PrintVideoInfo(
     *oformatbuffer = 0;
     uint8_t type = 0;
 
-    media_data_name = MP4GetTrackMediaDataName(mp4File, trackId);
+    // FIXME
+    media_data_name = MP4GetTrackMediaDataName(mp4File, trackId, 0);
     // encv 264b
     if (media_data_name != NULL && strcasecmp(media_data_name, "encv") == 0) {
         if (MP4GetTrackMediaDataOriginalFormat(mp4File,
@@ -468,7 +470,8 @@ static char* PrintCntlInfo(
     MP4FileHandle mp4File,
     MP4TrackId trackId)
 {
-    const char *media_data_name = MP4GetTrackMediaDataName(mp4File, trackId);
+    // FIXME
+    const char *media_data_name = MP4GetTrackMediaDataName(mp4File, trackId, 0);
     const char *typeName = "Unknown";
 
     if (media_data_name == NULL) {

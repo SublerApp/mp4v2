@@ -900,7 +900,7 @@ MP4FileHandle MP4ReadProvider( const char* fileName, const MP4FileProvider* file
         }
 
         catch (...) {
-            return MP4_INVALID_TRACK_ID;
+            return nullptr;
         }
     }
 
@@ -2016,8 +2016,9 @@ MP4FileHandle MP4ReadProvider( const char* fileName, const MP4FileProvider* file
             return dstTrackId;
         }
 
+        // FIXME
         const char *media_data_name =
-            MP4GetTrackMediaDataName(srcFile, srcTrackId);
+            MP4GetTrackMediaDataName(srcFile, srcTrackId, 0);
         if (media_data_name == NULL) return dstTrackId;
 
         if (MP4_IS_VIDEO_TRACK_TYPE(trackType)) {
@@ -2236,7 +2237,8 @@ MP4FileHandle MP4ReadProvider( const char* fileName, const MP4FileProvider* file
         if (MP4_IS_VIDEO_TRACK_TYPE(trackType)) {
 
             // test source file format for avc1
-            oFormat = MP4GetTrackMediaDataName(srcFile, srcTrackId);
+            // FIXME
+            oFormat = MP4GetTrackMediaDataName(srcFile, srcTrackId, 0);
             if (!strcasecmp(oFormat, "avc1"))
             {
                 dstTrackId = MP4AddEncH264VideoTrack(dstFile,
@@ -2634,12 +2636,31 @@ MP4FileHandle MP4ReadProvider( const char* fileName, const MP4FileProvider* file
         }
         return NULL;
     }
-    const char* MP4GetTrackMediaDataName(
+
+    uint32_t MP4GetTrackNumberOfSampleDescriptions(
         MP4FileHandle hFile, MP4TrackId trackId)
     {
         if (MP4_IS_VALID_FILE_HANDLE(hFile)) {
             try {
-                return ((MP4File*)hFile)->GetTrackMediaDataName(trackId);
+                return ((MP4File*)hFile)->GetTrackNumberOfSampleDescriptions(trackId);
+            }
+            catch( Exception* x ) {
+                mp4v2::impl::log.errorf(*x);
+                delete x;
+            }
+            catch( ... ) {
+                mp4v2::impl::log.errorf( "%s: failed", __FUNCTION__ );
+            }
+        }
+        return 0;
+    }
+
+    const char* MP4GetTrackMediaDataName(
+        MP4FileHandle hFile, MP4TrackId trackId, uint32_t index)
+    {
+        if (MP4_IS_VALID_FILE_HANDLE(hFile)) {
+            try {
+                return ((MP4File*)hFile)->GetTrackMediaDataName(trackId, index);
             }
             catch( Exception* x ) {
                 mp4v2::impl::log.errorf(*x);

@@ -32,28 +32,28 @@ MP4DEc3Atom::MP4DEc3Atom(MP4File &file)
         : MP4Atom(file, "dec3")
 {
 	AddProperty( new MP4BytesProperty(*this, "content", 0)); /* 0 */
-    /*AddProperty( new MP4BitfieldProperty(*this, "data_rate", 13)); /* 0 */
-    /*AddProperty( new MP4BitfieldProperty(*this, "num_ind_sub", 3)); /* 1 */
-    /*AddProperty( new MP4BytesProperty(*this, "ind_sub", 0)); /* 2 */
+    //AddProperty( new MP4BitfieldProperty(*this, "data_rate", 13)); /* 0 */
+    //AddProperty( new MP4BitfieldProperty(*this, "num_ind_sub", 3)); /* 1 */
+    //AddProperty( new MP4BytesProperty(*this, "ind_sub", 0)); /* 2 */
 
-    /*MP4BitfieldProperty *pCount;
-    MP4TableProperty *pTable;
+    //MP4BitfieldProperty *pCount;
+    //MP4TableProperty *pTable;
 
-    pCount = new MP4BitfieldProperty(*this, "num_ind_sub", 3);
-    AddProperty(pCount); /* 1 */
+    //pCount = new MP4BitfieldProperty(*this, "num_ind_sub", 3);
+    //AddProperty(pCount); /* 1 */
 
-    /*pTable = new MP4TableProperty(*this, "ind_sub", pCount);
-    AddProperty(pTable); /* 2 */
+    //pTable = new MP4TableProperty(*this, "ind_sub", pCount);
+    //AddProperty(pTable); /* 2 */
 
-    /*pTable->AddProperty(new MP4BitfieldProperty(pTable->GetParentAtom(),"fscod", 2));
-    pTable->AddProperty(new MP4BitfieldProperty(pTable->GetParentAtom(),"bsid", 5));
-    pTable->AddProperty(new MP4BitfieldProperty(pTable->GetParentAtom(),"bsmod", 5));
-    pTable->AddProperty(new MP4BitfieldProperty(pTable->GetParentAtom(),"acmod", 4));
-    pTable->AddProperty(new MP4BitfieldProperty(pTable->GetParentAtom(),"lfeon", 1));
-    pTable->AddProperty(new MP4BitfieldProperty(pTable->GetParentAtom(),"reserved", 3));
-    pTable->AddProperty(new MP4BitfieldProperty(pTable->GetParentAtom(),"num_dep_sub", 4));
+    //pTable->AddProperty(new MP4BitfieldProperty(pTable->GetParentAtom(),"fscod", 2));
+    //pTable->AddProperty(new MP4BitfieldProperty(pTable->GetParentAtom(),"bsid", 5));
+    //pTable->AddProperty(new MP4BitfieldProperty(pTable->GetParentAtom(),"bsmod", 5));
+    //pTable->AddProperty(new MP4BitfieldProperty(pTable->GetParentAtom(),"acmod", 4));
+    //pTable->AddProperty(new MP4BitfieldProperty(pTable->GetParentAtom(),"lfeon", 1));
+    //pTable->AddProperty(new MP4BitfieldProperty(pTable->GetParentAtom(),"reserved", 3));
+    //pTable->AddProperty(new MP4BitfieldProperty(pTable->GetParentAtom(),"num_dep_sub", 4));
 
-    pTable->AddProperty(new MP4BitfieldProperty(pTable->GetParentAtom(),"chan_loc", 1));*/
+    //pTable->AddProperty(new MP4BitfieldProperty(pTable->GetParentAtom(),"chan_loc", 1));*/
 }
 
 void MP4DEc3Atom::Generate()

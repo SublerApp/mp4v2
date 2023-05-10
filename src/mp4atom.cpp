@@ -829,12 +829,14 @@ MP4Atom::factory( MP4File &file, MP4Atom* parent, const char* type )
                     return new MP4UdtaElementAtom( file, type );
         }
 
-        if( descendsFrom( parent, "alac" ))
+        if( descendsFrom( parent, "alac" )) {
             if( ATOMID( ptype ) == ATOMID( "alac" ))
                 return new MP4ALACAtom( file );
-        else
+        }
+        else {
             if( ATOMID( ptype ) == ATOMID( "alac" ))
                 return new MP4SoundAtom( file, type );
+        }
 
     }
 
