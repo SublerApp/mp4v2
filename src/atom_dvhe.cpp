@@ -63,6 +63,7 @@ MP4DvheAtom::MP4DvheAtom(MP4File &file)
     ExpectChildAtom("clap", Optional, OnlyOne);
     ExpectChildAtom("mdcv", Optional, OnlyOne);
     ExpectChildAtom("clli", Optional, OnlyOne);
+    ExpectChildAtom("amve", Optional, OnlyOne);
     // for now ExpectChildAtom("m4ds", Optional, OnlyOne);
 }
 

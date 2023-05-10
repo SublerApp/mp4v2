@@ -58,6 +58,7 @@ MP4Mp4vAtom::MP4Mp4vAtom(MP4File &file)
     ExpectChildAtom("clap", Optional, OnlyOne);
     ExpectChildAtom("mdcv", Optional, OnlyOne);
     ExpectChildAtom("clli", Optional, OnlyOne);
+    ExpectChildAtom("amve", Optional, OnlyOne);
 }
 
 void MP4Mp4vAtom::Generate()

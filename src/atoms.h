@@ -935,6 +935,16 @@ private:
     MP4MdcvAtom &operator= ( const MP4MdcvAtom &src );
 };
 
+class MP4AmveAtom : public MP4Atom {
+public:
+    MP4AmveAtom(MP4File &file);
+    void Generate();
+private:
+    MP4AmveAtom();
+    MP4AmveAtom( const MP4AmveAtom &src );
+    MP4AmveAtom &operator= ( const MP4AmveAtom &src );
+};
+
 class IPodUUIDAtom : public MP4Atom {
 public:
     IPodUUIDAtom(MP4File &file);
