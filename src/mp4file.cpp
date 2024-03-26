@@ -2334,7 +2334,7 @@ void MP4File::AddH264SequenceParameterSet (MP4TrackId trackId,
     MP4Atom *avcCAtom;
 
     // get 4cc media format - can be avc1 or encv for ismacrypted track
-    format = GetTrackMediaDataName(trackId);
+    format = GetTrackMediaDataName(trackId, 0);
 
     if (!strcasecmp(format, "avc1"))
         avcCAtom = FindAtom(MakeTrackName(trackId, "mdia.minf.stbl.stsd.avc1.avcC"));
@@ -4196,7 +4196,19 @@ const char* MP4File::GetTrackType(MP4TrackId trackId)
     return m_pTracks[FindTrackIndex(trackId)]->GetType();
 }
 
-const char *MP4File::GetTrackMediaDataName (MP4TrackId trackId)
+uint32_t MP4File::GetTrackNumberOfSampleDescriptions(MP4TrackId trackId)
+{
+    MP4Atom *pAtom =
+        FindAtom(MakeTrackName(trackId,
+                               "mdia.minf.stbl.stsd"));
+    if (pAtom) {
+        return pAtom->GetNumberOfChildAtoms();
+    } else {
+        return 0;
+    }
+}
+
+const char *MP4File::GetTrackMediaDataName (MP4TrackId trackId, uint32_t index)
 {
     MP4Atom *pChild;
     MP4Atom *pAtom =
@@ -4205,12 +4217,13 @@ const char *MP4File::GetTrackMediaDataName (MP4TrackId trackId)
     if ( pAtom == NULL )
        return NULL;
 
-    if (pAtom->GetNumberOfChildAtoms() != 1) {
-        log.errorf("%s: \"%s\": track %d has more than 1 child atoms in stsd", 
-                   __FUNCTION__, GetFilename().c_str(), trackId);
+    uint32_t numAtoms = pAtom->GetNumberOfChildAtoms();
+    if (index > numAtoms - 1) {
+        log.errorf("%s: \"%s\": track %d has no atom at index %d",
+                   __FUNCTION__, GetFilename().c_str(), trackId, index);
         return NULL;
     }
-    pChild = pAtom->GetChildAtom(0);
+    pChild = pAtom->GetChildAtom(index);
     return pChild->GetType();
 }
 
@@ -4414,7 +4427,7 @@ void MP4File::GetTrackH264SeqPictHeaders (MP4TrackId trackId,
     *ppPictHeaderSize = NULL;
 
     // get 4cc media format - can be avc1 or encv for ismacrypted track
-    format = GetTrackMediaDataName (trackId);
+    format = GetTrackMediaDataName (trackId, 0);
 
     if (!strcasecmp(format, "avc1"))
         avcCAtom = FindAtom(MakeTrackName(trackId, "mdia.minf.stbl.stsd.avc1.avcC"));

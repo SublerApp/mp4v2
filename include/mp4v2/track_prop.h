@@ -67,6 +67,11 @@ const char* MP4GetTrackType(
     MP4FileHandle hFile,
     MP4TrackId    trackId );
 
+MP4V2_EXPORT
+uint32_t MP4GetTrackNumberOfSampleDescriptions(
+    MP4FileHandle hFile,
+    MP4TrackId    trackId);
+
 /** Get the name of the track's media data atom.
  *
  *  MP4GetTrackMediaDataName returns the four character name of the specified
@@ -82,7 +87,8 @@ const char* MP4GetTrackType(
 MP4V2_EXPORT
 const char* MP4GetTrackMediaDataName(
     MP4FileHandle hFile,
-    MP4TrackId    trackId );
+    MP4TrackId    trackId,
+    uint32_t      index);
 
 /** Get the name of an encrypted track's original media data atom.
  *

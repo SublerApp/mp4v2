@@ -634,7 +634,8 @@ public:
 
     const char* GetTrackType(MP4TrackId trackId);
 
-    const char *GetTrackMediaDataName(MP4TrackId trackId);
+    uint32_t GetTrackNumberOfSampleDescriptions(MP4TrackId trackId);
+    const char *GetTrackMediaDataName(MP4TrackId trackId, uint32_t index);
     bool GetTrackMediaDataOriginalFormat(MP4TrackId trackId,
                                          char *originalFormat, uint32_t buflen);
     MP4Duration GetTrackDuration(MP4TrackId trackId);

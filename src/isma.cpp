@@ -73,23 +73,29 @@ void MP4File::MakeIsmaCompliant(bool addIsmaComplianceSdp)
     const char *audio_media_data_name, *video_media_data_name;
     uint8_t videoProfile = 0xff;
     if (audioTrackId != MP4_INVALID_TRACK_ID) {
-        audio_media_data_name = MP4GetTrackMediaDataName(this, audioTrackId);
-        if (!(ATOMID(audio_media_data_name) == ATOMID("mp4a") ||
-                ATOMID(audio_media_data_name) == ATOMID("enca"))) {
-            log.errorf("%s: \"%s\": can't make ISMA compliant when file contains an %s track", 
-                       __FUNCTION__, GetFilename().c_str(), audio_media_data_name);
-            return;
+        uint32_t numSampleDescs = MP4GetTrackNumberOfSampleDescriptions(this, audioTrackId);
+        for (uint32_t i = 0; i < numSampleDescs; i++) {
+            audio_media_data_name = MP4GetTrackMediaDataName(this, audioTrackId, i);
+            if (!(ATOMID(audio_media_data_name) == ATOMID("mp4a") ||
+                  ATOMID(audio_media_data_name) == ATOMID("enca"))) {
+                log.errorf("%s: \"%s\": can't make ISMA compliant when file contains an %s track",
+                           __FUNCTION__, GetFilename().c_str(), audio_media_data_name);
+                return;
+            }
         }
     }
     //
     // Note - might have to check for avc1 here...
     if (videoTrackId != MP4_INVALID_TRACK_ID) {
-        video_media_data_name = MP4GetTrackMediaDataName(this, videoTrackId);
-        if (!(ATOMID(video_media_data_name) == ATOMID("mp4v") ||
-                ATOMID(video_media_data_name) == ATOMID("encv"))) {
-            log.errorf("%s: \"%s\": can't make ISMA compliant when file contains an %s track", __FUNCTION__, 
-                       GetFilename().c_str(), video_media_data_name);
-            return;
+        uint32_t numSampleDescs = MP4GetTrackNumberOfSampleDescriptions(this, videoTrackId);
+        for (uint32_t i = 0; i < numSampleDescs; i++) {
+            video_media_data_name = MP4GetTrackMediaDataName(this, videoTrackId, i);
+            if (!(ATOMID(video_media_data_name) == ATOMID("mp4v") ||
+                  ATOMID(video_media_data_name) == ATOMID("encv"))) {
+                log.errorf("%s: \"%s\": can't make ISMA compliant when file contains an %s track", __FUNCTION__,
+                           GetFilename().c_str(), video_media_data_name);
+                return;
+            }
         }
         MP4LogLevel verb = log.verbosity;
         log.setVerbosity(MP4_LOG_NONE);
