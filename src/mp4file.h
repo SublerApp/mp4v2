@@ -484,6 +484,10 @@ public:
                                            uint16_t whitePointX, uint16_t whitePointY,
                                            uint32_t maxDisplayMasteringLuminance,
                                            uint32_t minDisplayMasteringLuminance);
+    MP4TrackId SetAmbientViewingEnvironment(MP4TrackId trackId,
+                                            uint32_t ambientIlluminance,
+                                            uint16_t ambientLightX,
+                                            uint16_t ambientLightY);
     MP4TrackId SetDolbyVisionMetadata(MP4TrackId trackId,
                                       uint8_t versionMajor,
                                       uint8_t versionMinor,

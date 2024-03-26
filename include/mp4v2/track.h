@@ -505,6 +505,13 @@ MP4TrackId MP4SetMasteringDisplayMetadata(
     uint32_t minDisplayMasteringLuminance);
 
 MP4V2_EXPORT
+MP4TrackId MP4SetAmbientViewingEnvironment(
+    MP4FileHandle hFile, MP4TrackId refTrackId,
+    uint32_t ambientIlluminance,
+    uint16_t ambientLightX,
+    uint16_t ambientLightY);
+
+MP4V2_EXPORT
 MP4TrackId MP4SetDolbyVisionMetadata(
     MP4FileHandle hFile, MP4TrackId refTrackId,
     uint8_t versionMajor,

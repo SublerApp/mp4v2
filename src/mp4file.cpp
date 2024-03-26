@@ -2898,6 +2898,43 @@ MP4TrackId MP4File::SetMasteringDisplayMetadata(MP4TrackId trackId,
     return trackId;
 }
 
+MP4TrackId MP4File::SetAmbientViewingEnvironment(MP4TrackId trackId,
+                                                 uint32_t ambientIlluminance,
+                                                 uint16_t ambientLightX,
+                                                 uint16_t ambientLightY)
+{
+    // validate reference track id
+    (void)FindTrackIndex(trackId);
+
+    if (ambientIlluminance == 0 || ambientLightX == 0 || ambientLightY == 0)
+    {
+        MP4Atom *pAmveAtom;
+
+        while ((pAmveAtom = FindAtom(MakeTrackName(trackId, "mdia.minf.stbl.stsd.*.amve"))))
+        {
+            MP4Atom* parent = pAmveAtom->GetParentAtom();
+            if (parent)
+            {
+                parent->DeleteChildAtom( pAmveAtom );
+                delete pAmveAtom;
+            }
+        }
+    }
+    else
+    {
+        MP4Atom *pAmveAtom = FindAtom(MakeTrackName(trackId, "mdia.minf.stbl.stsd.*.amve"));
+        if (pAmveAtom == nullptr)
+        {
+            AddChildAtom(MakeTrackName(trackId, "mdia.minf.stbl.stsd.*"), "amve");
+        }
+        SetTrackIntegerProperty(trackId, "mdia.minf.stbl.stsd.*.amve.ambientIlluminance", ambientIlluminance);
+        SetTrackIntegerProperty(trackId, "mdia.minf.stbl.stsd.*.amve.ambientLightX", ambientLightX);
+        SetTrackIntegerProperty(trackId, "mdia.minf.stbl.stsd.*.amve.ambientLightY", ambientLightY);
+    }
+
+    return trackId;
+}
+
 MP4TrackId MP4File::SetDolbyVisionMetadata(MP4TrackId trackId,
                                            uint8_t versionMajor,
                                            uint8_t versionMinor,

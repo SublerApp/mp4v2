@@ -1361,6 +1361,30 @@ MP4FileHandle MP4ModifyCallbacks(const MP4IOCallbacks* callbacks,
         return MP4_INVALID_TRACK_ID;
     }
 
+    MP4TrackId MP4SetAmbientViewingEnvironment(
+                                               MP4FileHandle hFile, MP4TrackId refTrackId,
+                                               uint32_t ambientIlluminance,
+                                               uint16_t ambientLightX,
+                                               uint16_t ambientLightY)
+    {
+        if (MP4_IS_VALID_FILE_HANDLE(hFile)) {
+            try {
+                return ((MP4File*)hFile)->SetAmbientViewingEnvironment(refTrackId,
+                                                                       ambientIlluminance,
+                                                                       ambientLightX,
+                                                                       ambientLightY);
+            }
+            catch( Exception* x ) {
+                mp4v2::impl::log.errorf(*x);
+                delete x;
+            }
+            catch( ... ) {
+                mp4v2::impl::log.errorf( "%s: failed", __FUNCTION__ );
+            }
+        }
+        return MP4_INVALID_TRACK_ID;
+    }
+
     MP4TrackId MP4SetDolbyVisionMetadata(MP4FileHandle hFile, MP4TrackId refTrackId,
                                         uint8_t versionMajor,
                                         uint8_t versionMinor,

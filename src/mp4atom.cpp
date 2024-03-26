@@ -866,6 +866,8 @@ MP4Atom::factory( MP4File &file, MP4Atom* parent, const char* type )
                 return new MP4SoundAtom( file, type );
             if( ATOMID(type) == ATOMID("alac") )
                 return new MP4SoundAtom( file, type );
+            if( ATOMID(type) == ATOMID("amve") )
+                return new MP4AmveAtom(file);
             break;
 
         case 'c':
