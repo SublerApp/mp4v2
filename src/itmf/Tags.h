@@ -49,6 +49,34 @@ public:
     static const string CODE_TEMPO;
     static const string CODE_COMPILATION;
 
+    static const string CODE_TRACKSUBTITLE;
+    static const string CODE_SONGDESCRIPTION;
+    static const string CODE_ARTDIRECTOR;
+    static const string CODE_ARRANGER;
+    static const string CODE_LYRICIST;
+    static const string CODE_ACKNOWLEDGEMENT;
+    static const string CODE_CONDUCTOR;
+
+    static const string CODE_WORK_NAME;
+    static const string CODE_MOVEMENT_NAME;
+    static const string CODE_MOVEMENT_NUMBER;
+    static const string CODE_MOVEMENT_COUNT;
+    static const string CODE_SHOW_WORK_AND_MOVEMENT;
+
+    static const string CODE_LINEARNOTES;
+    static const string CODE_RECORDCOMPANY;
+    static const string CODE_ORIGINALARTIST;
+    static const string CODE_PHONOGRAMRIGHTS;
+    static const string CODE_PRODUCER;
+    static const string CODE_PERFORMER;
+    static const string CODE_PUBLISHER;
+    static const string CODE_SOUNDENGINEER;
+    static const string CODE_SOLOIST;
+    static const string CODE_CREDITS;
+    static const string CODE_THANKS;
+    static const string CODE_ONLINEEXTRAS;
+    static const string CODE_EXECUTIVEPRODUCER;
+
     static const string CODE_TVSHOW;
     static const string CODE_TVNETWORK;
     static const string CODE_TVEPISODEID;
@@ -57,6 +85,7 @@ public:
 
     static const string CODE_DESCRIPTION;
     static const string CODE_LONGDESCRIPTION;
+    static const string CODE_SERIESDESCRIPTION;
     static const string CODE_LYRICS;
 
     static const string CODE_SORTNAME;
@@ -71,6 +100,7 @@ public:
     static const string CODE_ENCODEDBY;
     static const string CODE_PURCHASEDATE;
 
+    static const string CODE_ITUNESU;
     static const string CODE_PODCAST;
     static const string CODE_KEYWORDS;
     static const string CODE_CATEGORY;
@@ -106,6 +136,34 @@ public:
     uint16_t    tempo;
     uint8_t     compilation;
 
+    string trackSubTitle;
+    string songDescription;
+    string artDirector;
+    string arranger;
+    string lyricist;
+    string acknowledgement;
+    string conductor;
+
+    string   workName;
+    string   movementName;
+    uint16_t movementNumber;
+    uint16_t movementCount;
+    uint8_t  showWorkAndMovement;
+
+    string linearNotes;
+    string recordCompany;
+    string originalArtist;
+    string phonogramRights;
+    string producer;
+    string performer;
+    string publisher;
+    string soundEngineer;
+    string soloist;
+    string credits;
+    string thanks;
+    string onlineExtras;
+    string executiveProducer;
+
     string   tvShow;
     string   tvEpisodeID;
     uint32_t tvSeason;
@@ -114,6 +172,7 @@ public:
 
     string description;
     string longDescription;
+    string seriesDescription;
     string lyrics;
 
     string sortName;
@@ -130,6 +189,7 @@ public:
     string encodedBy;
     string purchaseDate;
 
+    uint8_t itunesu;
     uint8_t podcast;
     string  keywords;
     string  category;

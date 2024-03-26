@@ -100,6 +100,34 @@ Tags::c_fetch( MP4Tags*& tags, MP4FileHandle hFile )
     fetchInteger( cim, CODE_TEMPO,             tempo,             c.tempo );
     fetchInteger( cim, CODE_COMPILATION,       compilation,       c.compilation );
 
+    fetchString(  cim, CODE_TRACKSUBTITLE,     trackSubTitle,     c.trackSubTitle );
+    fetchString(  cim, CODE_SONGDESCRIPTION,   songDescription,   c.songDescription );
+    fetchString(  cim, CODE_ARTDIRECTOR,       artDirector,       c.artDirector );
+    fetchString(  cim, CODE_ARRANGER,          arranger,          c.arranger );
+    fetchString(  cim, CODE_LYRICIST,          lyricist,          c.lyricist );
+    fetchString(  cim, CODE_ACKNOWLEDGEMENT,   acknowledgement,   c.acknowledgement );
+    fetchString(  cim, CODE_CONDUCTOR,         conductor,         c.conductor );
+
+    fetchString(  cim, CODE_WORK_NAME,              workName,            c.workName );
+    fetchString(  cim, CODE_MOVEMENT_NAME,          movementName,        c.movementName );
+    fetchInteger( cim, CODE_MOVEMENT_NUMBER,        movementNumber,      c.movementNumber );
+    fetchInteger( cim, CODE_MOVEMENT_COUNT,         movementCount,       c.movementCount );
+    fetchInteger( cim, CODE_SHOW_WORK_AND_MOVEMENT, showWorkAndMovement, c.showWorkAndMovement );
+
+    fetchString(  cim, CODE_LINEARNOTES,       linearNotes,       c.linearNotes );
+    fetchString(  cim, CODE_RECORDCOMPANY,     recordCompany,     c.recordCompany );
+    fetchString(  cim, CODE_ORIGINALARTIST,    originalArtist,    c.originalArtist );
+    fetchString(  cim, CODE_PHONOGRAMRIGHTS,   phonogramRights,   c.phonogramRights );
+    fetchString(  cim, CODE_PRODUCER,          producer,          c.producer );
+    fetchString(  cim, CODE_PERFORMER,         performer,         c.performer );
+    fetchString(  cim, CODE_PUBLISHER,         publisher,         c.publisher );
+    fetchString(  cim, CODE_SOUNDENGINEER,     soundEngineer,     c.soundEngineer );
+    fetchString(  cim, CODE_SOLOIST,           soloist,           c.soloist );
+    fetchString(  cim, CODE_CREDITS,           credits,           c.credits );
+    fetchString(  cim, CODE_THANKS,            thanks,            c.thanks );
+    fetchString(  cim, CODE_ONLINEEXTRAS,      onlineExtras,      c.onlineExtras );
+    fetchString(  cim, CODE_EXECUTIVEPRODUCER, executiveProducer ,c.executiveProducer );
+
     fetchString(  cim, CODE_TVSHOW,            tvShow,            c.tvShow );
     fetchString(  cim, CODE_TVNETWORK,         tvNetwork,         c.tvNetwork );
     fetchString(  cim, CODE_TVEPISODEID,       tvEpisodeID,       c.tvEpisodeID );
@@ -115,6 +143,7 @@ Tags::c_fetch( MP4Tags*& tags, MP4FileHandle hFile )
 
     fetchString(  cim, CODE_DESCRIPTION,       description,       c.description );
     fetchString(  cim, CODE_LONGDESCRIPTION,   longDescription,   c.longDescription );
+    fetchString(  cim, CODE_SERIESDESCRIPTION, seriesDescription, c.seriesDescription );
     fetchString(  cim, CODE_LYRICS,            lyrics,            c.lyrics );
 
     fetchString(  cim, CODE_COPYRIGHT,         copyright,         c.copyright );
@@ -122,6 +151,7 @@ Tags::c_fetch( MP4Tags*& tags, MP4FileHandle hFile )
     fetchString(  cim, CODE_ENCODEDBY,         encodedBy,         c.encodedBy );
     fetchString(  cim, CODE_PURCHASEDATE,      purchaseDate,      c.purchaseDate );
 
+    fetchInteger( cim, CODE_ITUNESU,           itunesu,           c.itunesu );
     fetchInteger( cim, CODE_PODCAST,           podcast,           c.podcast );
     fetchString(  cim, CODE_KEYWORDS,          keywords,          c.keywords );
     fetchString(  cim, CODE_CATEGORY,          category,          c.category );
@@ -355,7 +385,35 @@ Tags::c_store( MP4Tags*& tags, MP4FileHandle hFile )
     storeDisk(    file,                         disk,              c.disk );
     storeInteger( file, CODE_TEMPO,             tempo,             c.tempo );
     storeInteger( file, CODE_COMPILATION,       compilation,       c.compilation );
-    
+
+    storeString(  file, CODE_TRACKSUBTITLE,     trackSubTitle,     c.trackSubTitle );
+    storeString(  file, CODE_SONGDESCRIPTION,   songDescription,   c.songDescription );
+    storeString(  file, CODE_ARTDIRECTOR,       artDirector,       c.artDirector );
+    storeString(  file, CODE_ARRANGER,          arranger,          c.arranger );
+    storeString(  file, CODE_LYRICIST,          lyricist,          c.lyricist );
+    storeString(  file, CODE_ACKNOWLEDGEMENT,   acknowledgement,   c.acknowledgement );
+    storeString(  file, CODE_CONDUCTOR,         conductor,         c.conductor );
+
+    storeString(  file, CODE_WORK_NAME,              workName,            c.workName );
+    storeString(  file, CODE_MOVEMENT_NAME,          movementName,        c.movementName );
+    storeInteger( file, CODE_MOVEMENT_NUMBER,        movementNumber,      c.movementNumber );
+    storeInteger( file, CODE_MOVEMENT_COUNT,         movementCount,       c.movementCount );
+    storeInteger( file, CODE_SHOW_WORK_AND_MOVEMENT, showWorkAndMovement, c.showWorkAndMovement );
+
+    storeString(  file, CODE_LINEARNOTES,       linearNotes,       c.linearNotes );
+    storeString(  file, CODE_RECORDCOMPANY,     recordCompany,     c.recordCompany );
+    storeString(  file, CODE_ORIGINALARTIST,    originalArtist,    c.originalArtist );
+    storeString(  file, CODE_PHONOGRAMRIGHTS,   phonogramRights,   c.phonogramRights );
+    storeString(  file, CODE_PRODUCER,          producer,          c.producer );
+    storeString(  file, CODE_PERFORMER,         performer,         c.performer );
+    storeString(  file, CODE_PUBLISHER,         publisher,         c.publisher );
+    storeString(  file, CODE_SOUNDENGINEER,     soundEngineer,     c.soundEngineer );
+    storeString(  file, CODE_SOLOIST,           soloist,           c.soloist );
+    storeString(  file, CODE_CREDITS,           credits,           c.credits );
+    storeString(  file, CODE_THANKS,            thanks,            c.thanks );
+    storeString(  file, CODE_ONLINEEXTRAS,      onlineExtras,      c.onlineExtras );
+    storeString(  file, CODE_EXECUTIVEPRODUCER, executiveProducer ,c.executiveProducer );
+
     storeString(  file, CODE_TVSHOW,            tvShow,            c.tvShow );
     storeString(  file, CODE_TVNETWORK,         tvNetwork,         c.tvNetwork );
     storeString(  file, CODE_TVEPISODEID,       tvEpisodeID,       c.tvEpisodeID );
@@ -371,6 +429,7 @@ Tags::c_store( MP4Tags*& tags, MP4FileHandle hFile )
 
     storeString(  file, CODE_DESCRIPTION,       description,       c.description );
     storeString(  file, CODE_LONGDESCRIPTION,   longDescription,   c.longDescription );
+    storeString(  file, CODE_SERIESDESCRIPTION, seriesDescription, c.seriesDescription );
     storeString(  file, CODE_LYRICS,            lyrics,            c.lyrics );
 
     storeString(  file, CODE_COPYRIGHT,         copyright,         c.copyright );
@@ -378,6 +437,7 @@ Tags::c_store( MP4Tags*& tags, MP4FileHandle hFile )
     storeString(  file, CODE_ENCODEDBY,         encodedBy,         c.encodedBy );
     storeString(  file, CODE_PURCHASEDATE,      purchaseDate,      c.purchaseDate );
 
+    storeInteger( file, CODE_ITUNESU,           itunesu,           c.itunesu );
     storeInteger( file, CODE_PODCAST,           podcast,           c.podcast );
     storeString(  file, CODE_KEYWORDS,          keywords,          c.keywords );
     storeString(  file, CODE_CATEGORY,          category,          c.category );
@@ -851,6 +911,34 @@ const string Tags::CODE_DISK              = "disk";
 const string Tags::CODE_TEMPO             = "tmpo";
 const string Tags::CODE_COMPILATION       = "cpil";
 
+const string Tags::CODE_TRACKSUBTITLE     = "\xa9" "st3";
+const string Tags::CODE_SONGDESCRIPTION   = "\xa9" "des";
+const string Tags::CODE_ARTDIRECTOR       = "\xa9" "ard";
+const string Tags::CODE_ARRANGER          = "\xa9" "arg";
+const string Tags::CODE_LYRICIST          = "\xa9" "aut";
+const string Tags::CODE_ACKNOWLEDGEMENT   = "\xa9" "cak";
+const string Tags::CODE_CONDUCTOR         = "\xa9" "con";
+
+const string Tags::CODE_WORK_NAME              = "\xa9" "wrk";
+const string Tags::CODE_MOVEMENT_NAME          = "\xa9" "mvn";
+const string Tags::CODE_MOVEMENT_NUMBER        = "\xa9" "mvi";
+const string Tags::CODE_MOVEMENT_COUNT         = "\xa9" "mvc";
+const string Tags::CODE_SHOW_WORK_AND_MOVEMENT = "shwm";
+
+const string Tags::CODE_LINEARNOTES       = "\xa9" "lnt";
+const string Tags::CODE_RECORDCOMPANY     = "\xa9" "mak";
+const string Tags::CODE_ORIGINALARTIST    = "\xa9" "ope";
+const string Tags::CODE_PHONOGRAMRIGHTS   = "\xa9" "phg";
+const string Tags::CODE_PRODUCER          = "\xa9" "prd";
+const string Tags::CODE_PERFORMER         = "\xa9" "prf";
+const string Tags::CODE_PUBLISHER         = "\xa9" "pub";
+const string Tags::CODE_SOUNDENGINEER     = "\xa9" "sne";
+const string Tags::CODE_SOLOIST           = "\xa9" "sol";
+const string Tags::CODE_CREDITS           = "\xa9" "src";
+const string Tags::CODE_THANKS            = "\xa9" "thx";
+const string Tags::CODE_ONLINEEXTRAS      = "\xa9" "url";
+const string Tags::CODE_EXECUTIVEPRODUCER = "\xa9" "xpd";
+
 const string Tags::CODE_TVSHOW            = "tvsh";
 const string Tags::CODE_TVNETWORK         = "tvnn";
 const string Tags::CODE_TVEPISODEID       = "tven";
@@ -859,6 +947,7 @@ const string Tags::CODE_TVEPISODE         = "tves";
 
 const string Tags::CODE_DESCRIPTION       = "desc";
 const string Tags::CODE_LONGDESCRIPTION   = "ldes";
+const string Tags::CODE_SERIESDESCRIPTION = "sdes";
 const string Tags::CODE_LYRICS            = "\xa9" "lyr";
 
 const string Tags::CODE_SORTNAME          = "sonm";
@@ -873,6 +962,7 @@ const string Tags::CODE_ENCODINGTOOL      = "\xa9" "too";
 const string Tags::CODE_ENCODEDBY         = "\xa9" "enc";
 const string Tags::CODE_PURCHASEDATE      = "purd";
 
+const string Tags::CODE_ITUNESU           = "itnu";
 const string Tags::CODE_PODCAST           = "pcst";
 const string Tags::CODE_KEYWORDS          = "keyw";
 const string Tags::CODE_CATEGORY          = "catg";
