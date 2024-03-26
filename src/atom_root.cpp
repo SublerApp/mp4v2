@@ -98,6 +98,16 @@ void MP4RootAtom::FinishWrite(bool use64)
     const uint32_t size = m_pChildAtoms.Size();
     for ( uint32_t i = mdatIndex + 1; i < size; i++ )
         m_pChildAtoms[i]->Write();
+
+    // rewrite root atom child atoms to correct broken size
+    for ( uint32_t i = 0; i < size; i++ ) {
+        MP4Atom* atom = m_pChildAtoms[i];
+        if (atom->IsInvalidSize()) {
+            printf("Atom name: %s ", m_pChildAtoms[i]->GetType());
+            printf("rewritting invalid size\n");
+            m_pChildAtoms[i]->Rewrite();
+        }
+    }
 }
 
 void MP4RootAtom::BeginOptimalWrite()

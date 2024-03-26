@@ -196,6 +196,20 @@ bool MP4SetTrackLanguage(
     MP4TrackId    trackId,
     const char*   code );
 
+/** Set BCP – 47 language code of a track.
+ *
+ *  @param hFile handle of file for operation.
+ *  @param trackId id of track for operation.
+ *  @param code language code.
+ *
+ *  @return <b>true</b> on success, <b>false</b> on failure.
+ */
+MP4V2_EXPORT
+bool MP4SetTrackExtendedLanguage(
+    MP4FileHandle hFile,
+    MP4TrackId    trackId,
+    const char*   code );
+
 /** Get track name.
  *
  *  MP4GetTrackName gets the name of the track via udta.name property.
@@ -778,6 +792,12 @@ bool MP4SetTrackBytesProperty(
     const char*    propName,
     const uint8_t* pValue,
     uint32_t       valueSize);
+
+MP4V2_EXPORT
+bool MP4SetTrackWantsRoll(
+    MP4FileHandle  hFile,
+    MP4TrackId     trackId,
+    bool wantsRoll);
 
 /** @} ***********************************************************************/
 

@@ -13,10 +13,10 @@
  *
  * The Initial Developer of the Original Code is Cisco Systems Inc.
  * Portions created by Cisco Systems Inc. are
- * Copyright (C) Cisco Systems Inc. 2001.  All Rights Reserved.
+ * Copyright (C) Cisco Systems Inc. 2004.  All Rights Reserved.
  *
  * Contributor(s):
- *      Dave Mackie     dmackie@cisco.com
+ *      Damiano Galassi
  */
 
 #include "src/impl.h"
@@ -26,29 +26,21 @@ namespace impl {
 
 ///////////////////////////////////////////////////////////////////////////////
 
-MP4UdtaAtom::MP4UdtaAtom(MP4File &file)
-        : MP4Atom(file, "udta")
+MP4HvcEAtom::MP4HvcEAtom(MP4File &file)
+        : MP4Atom(file, "hvcE")
 {
-    ExpectChildAtom("chpl", Optional, OnlyOne);
-    ExpectChildAtom("cprt", Optional, Many);
-    ExpectChildAtom("hnti", Optional, OnlyOne);
-    ExpectChildAtom("meta", Optional, OnlyOne);
-    ExpectChildAtom("\251cpy", Optional, OnlyOne);
-    ExpectChildAtom("\251des", Optional, OnlyOne);
-    ExpectChildAtom("\251nam", Optional, OnlyOne);
-    ExpectChildAtom("\251cmt", Optional, OnlyOne);
-    ExpectChildAtom("\251prd", Optional, OnlyOne);
+    AddProperty( new MP4BytesProperty(*this, "HEVCConfig", 0)); /* 0 */
 }
 
-void MP4UdtaAtom::Read()
+void MP4HvcEAtom::Generate()
 {
-    if (ATOMID(m_pParentAtom->GetType()) == ATOMID("trak")) {
-        ExpectChildAtom("hinf", Optional, OnlyOne);
-        ExpectChildAtom("name", Optional, OnlyOne);
-        ExpectChildAtom("titl", Optional, Many);
-        ExpectChildAtom("tagc", Optional, Many);
-    }
+    MP4Atom::Generate();
+}
 
+void MP4HvcEAtom::Read()
+{
+    // calculate size of the metadata from the atom size
+    ((MP4BytesProperty*)m_pProperties[0])->SetValueSize(m_size);
     MP4Atom::Read();
 }
 

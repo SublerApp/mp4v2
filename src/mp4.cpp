@@ -326,10 +326,11 @@ MP4FileHandle MP4ModifyCallbacks(const MP4IOCallbacks* callbacks,
         return false;
     }
 
-    void MP4Close(MP4FileHandle hFile, uint32_t  flags)
+    bool MP4Close(MP4FileHandle hFile, uint32_t  flags)
     {
+        bool noErr = true;
         if( !MP4_IS_VALID_FILE_HANDLE( hFile ))
-            return;
+            return false;
 
         MP4File& f = *(MP4File*)hFile;
         try {
@@ -338,12 +339,15 @@ MP4FileHandle MP4ModifyCallbacks(const MP4IOCallbacks* callbacks,
         catch( Exception* x ) {
             mp4v2::impl::log.errorf(*x);
             delete x;
+            noErr = false;
         }
         catch( ... ) {
             mp4v2::impl::log.errorf( "%s: failed", __FUNCTION__ );
+            noErr = false;
         }
 
         delete &f;
+        return noErr;
     }
 
     bool MP4Dump(
@@ -976,6 +980,48 @@ MP4FileHandle MP4ModifyCallbacks(const MP4IOCallbacks* callbacks,
         return MP4_INVALID_TRACK_ID;
     }
 
+    MP4TrackId MP4AddEAC3AudioTrack(
+                                    MP4FileHandle hFile,
+                                    uint32_t samplingRate,
+                                    const void *cookie,
+                                    uint16_t cookieLen)
+    {
+        if (MP4_IS_VALID_FILE_HANDLE(hFile)) {
+            try {
+                return ((MP4File*)hFile)->
+                    AddEAC3AudioTrack(samplingRate, cookie, cookieLen);
+            }
+            catch( Exception* x ) {
+                mp4v2::impl::log.errorf(*x);
+                delete x;
+            }
+            catch( ... ) {
+                mp4v2::impl::log.errorf( "%s: failed", __FUNCTION__ );
+            }
+        }
+        return MP4_INVALID_TRACK_ID;
+    }
+
+    MP4TrackId MP4AddALACAudioTrack(
+                                    MP4FileHandle hFile,
+                                    uint32_t samplingRate)
+    {
+        if (MP4_IS_VALID_FILE_HANDLE(hFile)) {
+            try {
+                return ((MP4File*)hFile)->
+                AddALACAudioTrack(samplingRate);
+            }
+            catch( Exception* x ) {
+                mp4v2::impl::log.errorf(*x);
+                delete x;
+            }
+            catch( ... ) {
+                mp4v2::impl::log.errorf( "%s: failed", __FUNCTION__ );
+            }
+        }
+        return MP4_INVALID_TRACK_ID;
+    }
+
     MP4TrackId MP4AddEncAudioTrack(MP4FileHandle hFile,
                                    uint32_t timeScale,
                                    MP4Duration sampleDuration,
@@ -1238,6 +1284,247 @@ MP4FileHandle MP4ModifyCallbacks(const MP4IOCallbacks* callbacks,
         return MP4_INVALID_TRACK_ID;
     }
 
+    MP4TrackId MP4AddJpegVideoTrack(
+                                    MP4FileHandle hFile,
+                                    uint32_t timeScale,
+                                    MP4Duration sampleDuration,
+                                    uint16_t width,
+                                    uint16_t height)
+    {
+        if (MP4_IS_VALID_FILE_HANDLE(hFile)) {
+            try {
+                MP4File *pFile = (MP4File *)hFile;
+
+                return pFile->AddMP4JpegVideoTrack(timeScale,
+                                                    sampleDuration,
+                                                    width,
+                                                    height);
+            }
+            catch( Exception* x ) {
+                mp4v2::impl::log.errorf(*x);
+                delete x;
+            }
+            catch( ... ) {
+                mp4v2::impl::log.errorf( "%s: failed", __FUNCTION__ );
+            }
+        }
+        return MP4_INVALID_TRACK_ID;
+    }
+
+    MP4TrackId MP4SetContentLightMetadata(
+                                        MP4FileHandle hFile, MP4TrackId refTrackId,
+                                        uint32_t maxCLL,
+                                        uint32_t maxFALL)
+    {
+        if (MP4_IS_VALID_FILE_HANDLE(hFile)) {
+            try {
+                return ((MP4File*)hFile)->SetContentLightMetadata(refTrackId, maxCLL, maxFALL);
+            }
+            catch( Exception* x ) {
+                mp4v2::impl::log.errorf(*x);
+                delete x;
+            }
+            catch( ... ) {
+                mp4v2::impl::log.errorf( "%s: failed", __FUNCTION__ );
+            }
+        }
+        return MP4_INVALID_TRACK_ID;
+    }
+
+    MP4TrackId MP4SetMasteringDisplayMetadata(
+                                            MP4FileHandle hFile, MP4TrackId refTrackId,
+                                            uint16_t displayPrimariesGX, uint16_t displayPrimariesGY,
+                                            uint16_t displayPrimariesBX, uint16_t displayPrimariesBY,
+                                            uint16_t displayPrimariesRX, uint16_t displayPrimariesRY,
+                                            uint16_t whitePointX, uint16_t whitePointY,
+                                            uint32_t maxDisplayMasteringLuminance,
+                                            uint32_t minDisplayMasteringLuminance)
+    {
+        if (MP4_IS_VALID_FILE_HANDLE(hFile)) {
+            try {
+                return ((MP4File*)hFile)->SetMasteringDisplayMetadata(refTrackId,
+                                                                    displayPrimariesGX, displayPrimariesGY,
+                                                                    displayPrimariesBX, displayPrimariesBY,
+                                                                    displayPrimariesRX, displayPrimariesRY,
+                                                                    whitePointX, whitePointY,
+                                                                    maxDisplayMasteringLuminance,
+                                                                    minDisplayMasteringLuminance);
+            }
+            catch( Exception* x ) {
+                mp4v2::impl::log.errorf(*x);
+                delete x;
+            }
+            catch( ... ) {
+                mp4v2::impl::log.errorf( "%s: failed", __FUNCTION__ );
+            }
+        }
+        return MP4_INVALID_TRACK_ID;
+    }
+
+    MP4TrackId MP4SetDolbyVisionMetadata(MP4FileHandle hFile, MP4TrackId refTrackId,
+                                        uint8_t versionMajor,
+                                        uint8_t versionMinor,
+                                        uint8_t profile,
+                                        uint8_t level,
+                                        bool rpuPresentFlag,
+                                        bool elPresentFlag,
+                                        bool blPresentFlag,
+                                        uint8_t blSignalCompatibilityId)
+    {
+        if (MP4_IS_VALID_FILE_HANDLE(hFile)) {
+            try {
+                return ((MP4File*)hFile)->SetDolbyVisionMetadata(refTrackId,
+                                                                versionMajor,
+                                                                versionMinor,
+                                                                profile,
+                                                                level,
+                                                                rpuPresentFlag,
+                                                                elPresentFlag,
+                                                                blPresentFlag,
+                                                                blSignalCompatibilityId);
+            }
+            catch( Exception* x ) {
+                mp4v2::impl::log.errorf(*x);
+                delete x;
+            }
+            catch( ... ) {
+                mp4v2::impl::log.errorf( "%s: failed", __FUNCTION__ );
+            }
+        }
+        return MP4_INVALID_TRACK_ID;
+    }
+
+    MP4TrackId MP4SetDolbyVisionELConfiguration(MP4FileHandle hFile, MP4TrackId refTrackId,
+                                                const uint8_t *config,
+                                                uint32_t configSize)
+
+    {
+        if (MP4_IS_VALID_FILE_HANDLE(hFile)) {
+            try {
+                return ((MP4File*)hFile)->SetDolbyVisionELConfiguration(refTrackId,
+                                                                        config,
+                                                                        configSize);
+            }
+            catch( Exception* x ) {
+                mp4v2::impl::log.errorf(*x);
+                delete x;
+            }
+            catch( ... ) {
+                mp4v2::impl::log.errorf( "%s: failed", __FUNCTION__ );
+            }
+        }
+        return MP4_INVALID_TRACK_ID;
+    }
+
+    MP4TrackId MP4AddAV1VideoTrack(MP4FileHandle hFile,
+                                    uint32_t timeScale,
+                                    MP4Duration sampleDuration,
+                                    uint16_t width,
+                                    uint16_t height,
+                                    const uint8_t *magicCookie,
+                                    uint32_t magicCookieSize)
+    {
+        if (MP4_IS_VALID_FILE_HANDLE(hFile)) {
+            try {
+                MP4File *pFile = (MP4File *)hFile;
+
+                return pFile->AddAV1VideoTrack(timeScale,
+                                            sampleDuration,
+                                            width,
+                                            height,
+                                            magicCookie,
+                                            magicCookieSize);
+            }
+            catch( Exception* x ) {
+                mp4v2::impl::log.errorf(*x);
+                delete x;
+            }
+            catch( ... ) {
+                mp4v2::impl::log.errorf( "%s: failed", __FUNCTION__ );
+            }
+        }
+        return MP4_INVALID_TRACK_ID;
+    }
+
+    MP4TrackId MP4AddH265VideoTrack(MP4FileHandle hFile,
+                                    uint32_t timeScale,
+                                    MP4Duration sampleDuration,
+                                    uint16_t width,
+                                    uint16_t height,
+                                    const uint8_t *magicCookie,
+                                    uint32_t magicCookieSize,
+                                    bool complete)
+    {
+        if (MP4_IS_VALID_FILE_HANDLE(hFile)) {
+            try {
+                MP4File *pFile = (MP4File *)hFile;
+
+                return pFile->AddH265VideoTrack(timeScale,
+                                                sampleDuration,
+                                                width,
+                                                height,
+                                                magicCookie,
+                                                magicCookieSize,
+                                                complete);
+            }
+            catch( Exception* x ) {
+                mp4v2::impl::log.errorf(*x);
+                delete x;
+            }
+            catch( ... ) {
+                mp4v2::impl::log.errorf( "%s: failed", __FUNCTION__ );
+            }
+        }
+        return MP4_INVALID_TRACK_ID;
+    }
+
+    MP4TrackId MP4AddDolbyVisionH265VideoTrack(MP4FileHandle hFile,
+                                                uint32_t timeScale,
+                                                MP4Duration sampleDuration,
+                                                uint16_t width,
+                                                uint16_t height,
+                                                const uint8_t *magicCookie,
+                                                uint32_t magicCookieSize,
+                                                uint8_t versionMajor,
+                                                uint8_t versionMinor,
+                                                uint8_t profile,
+                                                uint8_t level,
+                                                bool rpuPresentFlag,
+                                                bool elPresentFlag,
+                                                bool blPresentFlag,
+                                                uint8_t blSignalCompatibilityId,
+                                                bool complete)
+    {
+        if (MP4_IS_VALID_FILE_HANDLE(hFile)) {
+            try {
+                MP4File *pFile = (MP4File *)hFile;
+
+                return pFile->AddDolbyVisionH265VideoTrack(timeScale,
+                                                        sampleDuration,
+                                                        width,
+                                                        height,
+                                                        magicCookie,
+                                                        magicCookieSize,
+                                                        versionMajor,
+                                                        versionMinor,
+                                                        profile,
+                                                        level,
+                                                        rpuPresentFlag,
+                                                        elPresentFlag,
+                                                        blPresentFlag,
+                                                        blSignalCompatibilityId,
+                                                        complete);
+            }
+            catch( Exception* x ) {
+                mp4v2::impl::log.errorf(*x);
+                delete x;
+            }
+            catch( ... ) {
+                mp4v2::impl::log.errorf( "%s: failed", __FUNCTION__ );
+            }
+        }
+        return MP4_INVALID_TRACK_ID;
+    }
 
     MP4TrackId MP4AddH264VideoTrack(MP4FileHandle hFile,
                                     uint32_t timeScale,
@@ -1512,6 +1799,48 @@ MP4FileHandle MP4ModifyCallbacks(const MP4IOCallbacks* callbacks,
         return MP4_INVALID_TRACK_ID;
     }
 
+    MP4TrackId MP4AddCCTrack(MP4FileHandle hFile,
+                            uint32_t timeScale,
+                            uint16_t width,
+                            uint16_t height)
+    {
+        if (MP4_IS_VALID_FILE_HANDLE(hFile)) {
+            try {
+                return ((MP4File*)hFile)->AddCCTrack(timeScale, width, height);
+            }
+            catch( Exception* x ) {
+                mp4v2::impl::log.errorf(*x);
+                delete x;
+            }
+            catch( ... ) {
+                mp4v2::impl::log.errorf( "%s: failed", __FUNCTION__ );
+            }
+        }
+        return MP4_INVALID_TRACK_ID;
+    }
+
+    MP4TrackId MP4AddWebVTTTrack(MP4FileHandle hFile,
+                                uint32_t timeScale,
+                                uint16_t width,
+                                uint16_t height,
+                                const void *cookie,
+                                uint16_t cookieLen)
+    {
+        if (MP4_IS_VALID_FILE_HANDLE(hFile)) {
+            try {
+                return ((MP4File*)hFile)->AddWebVTTTrack(timeScale, width, height, cookie, cookieLen);
+            }
+            catch( Exception* x ) {
+                mp4v2::impl::log.errorf(*x);
+                delete x;
+            }
+            catch( ... ) {
+                mp4v2::impl::log.errorf( "%s: failed", __FUNCTION__ );
+            }
+        }
+        return MP4_INVALID_TRACK_ID;
+    }
+
     MP4TrackId MP4AddSubpicTrack(MP4FileHandle hFile,
                                    uint32_t timescale,
                                    uint16_t width,
@@ -1538,6 +1867,31 @@ MP4FileHandle MP4ModifyCallbacks(const MP4IOCallbacks* callbacks,
         if (MP4_IS_VALID_FILE_HANDLE(hFile)) {
             try {
                 return ((MP4File*)hFile)->AddChapterTextTrack(refTrackId, timescale);
+            }
+            catch( Exception* x ) {
+                mp4v2::impl::log.errorf(*x);
+                delete x;
+            }
+            catch( ... ) {
+                mp4v2::impl::log.errorf( "%s: failed", __FUNCTION__ );
+            }
+        }
+        return MP4_INVALID_TRACK_ID;
+    }
+
+
+    MP4TrackId MP4AddCleanAperture(
+        MP4FileHandle hFile, MP4TrackId refTrackId, uint32_t cleanApertureWidthN, uint32_t cleanApertureWidthD,
+        uint32_t cleanApertureHeightN, uint32_t cleanApertureHeightD,
+        uint32_t horizOffN, uint32_t horizOffD,
+        uint32_t vertOffN, uint32_t vertOffD)
+    {
+        if (MP4_IS_VALID_FILE_HANDLE(hFile)) {
+            try {
+                return ((MP4File*)hFile)->AddCleanAperture(refTrackId, cleanApertureWidthN, cleanApertureWidthD,
+                                                           cleanApertureHeightN, cleanApertureHeightD,
+                                                           horizOffN, horizOffD,
+                                                           vertOffN, vertOffD);
             }
             catch( Exception* x ) {
                 mp4v2::impl::log.errorf(*x);
@@ -1785,6 +2139,12 @@ MP4FileHandle MP4ModifyCallbacks(const MP4IOCallbacks* callbacks,
                 }
                 free(pictheader);
                 free(pictheadersize);
+            } else if(ATOMID(media_data_name) == ATOMID("jpeg")) {
+                dstTrackId = MP4AddJpegVideoTrack(dstFile,
+                                                  MP4GetTrackTimeScale(srcFile, srcTrackId),
+                                                  MP4GetTrackFixedSampleDuration(srcFile, srcTrackId),
+                                                  MP4GetTrackVideoWidth(srcFile, srcTrackId),
+                                                  MP4GetTrackVideoHeight(srcFile, srcTrackId));
             } else
                 return dstTrackId;
         } else if (MP4_IS_AUDIO_TRACK_TYPE(trackType)) {
@@ -3030,6 +3390,27 @@ MP4FileHandle MP4ModifyCallbacks(const MP4IOCallbacks* callbacks,
         return false;
     }
 
+    bool MP4SetTrackWantsRoll(
+        MP4FileHandle hFile, MP4TrackId trackId,
+        bool wantsRoll)
+    {
+        if (MP4_IS_VALID_FILE_HANDLE(hFile)) {
+            try {
+                ((MP4File*)hFile)->SetWantsRoll(trackId, wantsRoll);
+                return true;
+            }
+            catch( Exception* x ) {
+                mp4v2::impl::log.errorf(*x);
+                delete x;
+            }
+            catch( ... ) {
+                mp4v2::impl::log.errorf( "%s: failed", __FUNCTION__ );
+            }
+        }
+        return false;
+    }
+
+
     /* sample operations */
 
     bool MP4ReadSample(
@@ -3069,6 +3450,48 @@ MP4FileHandle MP4ModifyCallbacks(const MP4IOCallbacks* callbacks,
         *pNumBytes = 0;
         return false;
     }
+
+    bool MP4ReadSampleSampleDependency(
+         /* input parameters */
+         MP4FileHandle hFile,
+         MP4TrackId trackId,
+         MP4SampleId sampleId,
+         /* output parameters */
+         uint8_t** ppBytes,
+         uint32_t* pNumBytes,
+         MP4Timestamp* pStartTime,
+         MP4Duration* pDuration,
+         MP4Duration* pRenderingOffset,
+         bool* pIsSyncSample,
+         bool* hasDependencyFlags,
+         uint32_t* dependencyFlags)
+     {
+         if (MP4_IS_VALID_FILE_HANDLE(hFile)) {
+             try {
+                 ((MP4File*)hFile)->ReadSample(
+                     trackId,
+                     sampleId,
+                     ppBytes,
+                     pNumBytes,
+                     pStartTime,
+                     pDuration,
+                     pRenderingOffset,
+                     pIsSyncSample,
+                     hasDependencyFlags,
+                     dependencyFlags);
+                 return true;
+             }
+             catch( Exception* x ) {
+                 mp4v2::impl::log.errorf(*x);
+                 delete x;
+             }
+             catch( ... ) {
+                 mp4v2::impl::log.errorf( "%s: failed", __FUNCTION__ );
+             }
+         }
+         *pNumBytes = 0;
+         return false;
+     }
 
     bool MP4ReadSampleFromTime(
         /* input parameters */
@@ -4599,6 +5022,30 @@ bool MP4SetTrackLanguage(
 
 ///////////////////////////////////////////////////////////////////////////////
 
+bool MP4SetTrackExtendedLanguage(
+    MP4FileHandle hFile,
+    MP4TrackId    trackId,
+    const char*   code )
+{
+    if( !MP4_IS_VALID_FILE_HANDLE( hFile ))
+        return false;
+
+    try {
+        return ((MP4File*)hFile)->SetTrackExtendedLanguage( trackId, code );
+    }
+    catch( Exception* x ) {
+        mp4v2::impl::log.errorf(*x);
+        delete x;
+    }
+    catch( ... ) {
+        mp4v2::impl::log.errorf("%s: failed", __FUNCTION__ );
+    }
+
+    return false;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
 bool MP4GetTrackName(
     MP4FileHandle hFile,
     MP4TrackId    trackId,
@@ -4693,6 +5140,106 @@ bool MP4SetTrackDurationPerChunk(
     }
     catch( ... ) {
         mp4v2::impl::log.errorf("%s: failed", __FUNCTION__ );
+    }
+
+    return false;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+bool MP4AddMediaCharacteristicTag(
+    MP4FileHandle hFile,
+    MP4TrackId    trackId,
+    const char*   tag)
+{
+    if( !MP4_IS_VALID_FILE_HANDLE( hFile ))
+        return false;
+
+    try {
+        ((MP4File*)hFile)->AddMediaCharacteristicTag( trackId, tag );
+        return true;
+    }
+    catch( Exception* x ) {
+        mp4v2::impl::log.errorf(*x);
+        delete x;
+    }
+    catch( ... ) {
+        mp4v2::impl::log.errorf( "%s: failed", __FUNCTION__ );
+    }
+
+    return false;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+bool MP4RemoveAllMediaCharacteristicTags(
+    MP4FileHandle hFile,
+    MP4TrackId    trackId)
+{
+    if( !MP4_IS_VALID_FILE_HANDLE( hFile ))
+        return false;
+
+    try {
+        ((MP4File*)hFile)->RemoveAllMediaCharacteristicTags( trackId );
+        return true;
+    }
+    catch( Exception* x ) {
+        mp4v2::impl::log.errorf(*x);
+        delete x;
+    }
+    catch( ... ) {
+        mp4v2::impl::log.errorf( "%s: failed", __FUNCTION__ );
+    }
+
+    return false;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+bool MP4AddTrackReference(
+    MP4FileHandle hFile,
+    const char*   trefName,
+    MP4TrackId    trackId,
+    MP4TrackId    refTrackId )
+{
+    if( !MP4_IS_VALID_FILE_HANDLE( hFile ))
+        return false;
+
+    try {
+        ((MP4File*)hFile)->AddTrackReference2( trefName, trackId, refTrackId );
+        return true;
+    }
+    catch( Exception* x ) {
+        mp4v2::impl::log.errorf(*x);
+        delete x;
+    }
+    catch( ... ) {
+        mp4v2::impl::log.errorf( "%s: failed", __FUNCTION__ );
+    }
+
+    return false;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+bool MP4RemoveAllTrackReferences(
+    MP4FileHandle hFile,
+    const char*   trefName,
+    MP4TrackId    trackId )
+{
+    if( !MP4_IS_VALID_FILE_HANDLE( hFile ))
+        return false;
+
+    try {
+        ((MP4File*)hFile)->RemoveAllTrackReferences( trefName, trackId );
+        return true;
+    }
+    catch( Exception* x ) {
+        mp4v2::impl::log.errorf(*x);
+        delete x;
+    }
+    catch( ... ) {
+        mp4v2::impl::log.errorf( "%s: failed", __FUNCTION__ );
     }
 
     return false;

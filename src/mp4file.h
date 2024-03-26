@@ -185,8 +185,11 @@ public:
         MP4TrackId trackId, const char* name,
         const uint8_t* pValue, uint32_t valueSize);
 
+    void SetWantsRoll(MP4TrackId trackId, bool wantsRoll);
+
     bool GetTrackLanguage( MP4TrackId, char* );
     bool SetTrackLanguage( MP4TrackId, const char* );
+    bool SetTrackExtendedLanguage( MP4TrackId, const char* );
     bool GetTrackName( MP4TrackId trackId, char** name );
     bool SetTrackName( MP4TrackId trackId, const char* name);
 
@@ -278,6 +281,14 @@ public:
         uint8_t lfeon,
         uint8_t bit_rate_code);
 
+    MP4TrackId AddEAC3AudioTrack(
+        uint32_t samplingRate,
+        const void *cookie,
+        uint16_t cookieLen);
+
+    MP4TrackId AddALACAudioTrack(
+        uint32_t samplingRate);
+
     MP4TrackId AddEncAudioTrack( // ismacryp
         uint32_t timeScale,
         MP4Duration sampleDuration,
@@ -321,6 +332,12 @@ public:
         uint16_t height,
         uint8_t videoType);
 
+    MP4TrackId AddMP4JpegVideoTrack(
+         uint32_t timeScale,
+         MP4Duration sampleDuration,
+         uint16_t width,
+         uint16_t height);
+
     MP4TrackId AddEncVideoTrack( // ismacryp
         uint32_t timeScale,
         MP4Duration sampleDuration,
@@ -353,6 +370,32 @@ public:
         uint32_t avgBitrate,
         uint32_t maxBitrate);
 
+    MP4TrackId AddH265VideoTrack(
+        uint32_t timeScale,
+        MP4Duration sampleDuration,
+        uint16_t width,
+        uint16_t height,
+        const uint8_t *magicCookie,
+        uint32_t magicCookieSize,
+        bool complete);
+
+    MP4TrackId AddDolbyVisionH265VideoTrack(
+        uint32_t timeScale,
+        MP4Duration sampleDuration,
+        uint16_t width,
+        uint16_t height,
+        const uint8_t *magicCookie,
+        uint32_t magicCookieSize,
+        uint8_t versionMajor,
+        uint8_t versionMinor,
+        uint8_t profile,
+        uint8_t level,
+        bool rpuPresentFlag,
+        bool elPresentFlag,
+        bool blPresentFlag,
+        uint8_t blSignalCompatibilityId,
+        bool complete);
+
     MP4TrackId AddH264VideoTrack(
         uint32_t timeScale,
         MP4Duration sampleDuration,
@@ -377,6 +420,15 @@ public:
     void AddH264PictureParameterSet(MP4TrackId trackId,
                                     const uint8_t *pPicture,
                                     uint16_t pictureLen);
+
+    MP4TrackId AddAV1VideoTrack(
+        uint32_t timeScale,
+        MP4Duration sampleDuration,
+        uint16_t width,
+        uint16_t height,
+        const uint8_t *magicCookie,
+        uint32_t magicCookieSize);
+
     MP4TrackId AddHintTrack(MP4TrackId refTrackId);
 
     MP4TrackId AddTextTrack(MP4TrackId refTrackId);
@@ -402,12 +454,49 @@ public:
                                 uint16_t width,
                                 uint16_t height);
 
+    MP4TrackId AddCCTrack(uint32_t timeScale,
+                          uint16_t width,
+                          uint16_t height);
+
+    MP4TrackId AddWebVTTTrack(uint32_t timeScale,
+                          uint16_t width,
+                          uint16_t height,
+                          const void *cookie,
+                          uint16_t cookieLen);
+
     MP4TrackId AddSubpicTrack(uint32_t timescale,
                                 uint16_t width,
                                 uint16_t height);
 
     MP4TrackId AddPixelAspectRatio(MP4TrackId trackId, uint32_t hSpacing, uint32_t vSpacing);
+    MP4TrackId AddCleanAperture(MP4TrackId trackId, uint32_t cleanApertureWidthN, uint32_t cleanApertureWidthD,
+                                                    uint32_t cleanApertureHeightN, uint32_t cleanApertureHeightD,
+                                                    uint32_t horizOffN, uint32_t horizOffD,
+                                                    uint32_t vertOffN, uint32_t vertOffD);
     MP4TrackId AddColr(MP4TrackId trackId, uint16_t pri, uint16_t tran, uint16_t mat);
+    MP4TrackId SetContentLightMetadata(MP4TrackId trackId,
+                                       uint32_t maxCLL,
+                                       uint32_t maxFALL);
+    MP4TrackId SetMasteringDisplayMetadata(MP4TrackId trackId,
+                                           uint16_t displayPrimariesGX, uint16_t displayPrimariesGY,
+                                           uint16_t displayPrimariesBX, uint16_t displayPrimariesBY,
+                                           uint16_t displayPrimariesRX, uint16_t displayPrimariesRY,
+                                           uint16_t whitePointX, uint16_t whitePointY,
+                                           uint32_t maxDisplayMasteringLuminance,
+                                           uint32_t minDisplayMasteringLuminance);
+    MP4TrackId SetDolbyVisionMetadata(MP4TrackId trackId,
+                                      uint8_t versionMajor,
+                                      uint8_t versionMinor,
+                                      uint8_t profile,
+                                      uint8_t level,
+                                      bool rpuPresentFlag,
+                                      bool elPresentFlag,
+                                      bool blPresentFlag,
+                                      uint8_t blSignalCompatibilityId);
+
+    MP4TrackId SetDolbyVisionELConfiguration(MP4TrackId trackId,
+                                             const uint8_t *config,
+                                             uint32_t configSize);
 
     /** Add a QuickTime chapter.
      *
@@ -776,6 +865,12 @@ public:
         MP4Timestamp when,
         MP4Timestamp* pStartTime = NULL,
         MP4Duration* pDuration = NULL);
+
+    void AddMediaCharacteristicTag(MP4TrackId trackId, const char* tag);
+    void RemoveAllMediaCharacteristicTags(MP4TrackId trackId);
+
+    void AddTrackReference2(const char* trefName, MP4TrackId trackId, MP4TrackId refTrackId);
+    void RemoveAllTrackReferences(const char* trefName, MP4TrackId trackId);
 
     /* "protected" interface to be used only by friends in library */
 

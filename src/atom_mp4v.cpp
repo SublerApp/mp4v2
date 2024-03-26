@@ -55,6 +55,9 @@ MP4Mp4vAtom::MP4Mp4vAtom(MP4File &file)
     ExpectChildAtom("colr", Optional, OnlyOne);
     ExpectChildAtom("esds", Required, OnlyOne);
     ExpectChildAtom("pasp", Optional, OnlyOne);
+    ExpectChildAtom("clap", Optional, OnlyOne);
+    ExpectChildAtom("mdcv", Optional, OnlyOne);
+    ExpectChildAtom("clli", Optional, OnlyOne);
 }
 
 void MP4Mp4vAtom::Generate()

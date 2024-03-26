@@ -169,8 +169,11 @@ public:
     MP4Duration GetDurationPerChunk();
     void        SetDurationPerChunk( MP4Duration );
 
+    void SetWantsRoll(bool wantsRoll);
+
 protected:
     bool        InitEditListProperties();
+    bool        InitRollProperties();
 
     File*       GetSampleFile( MP4SampleId sampleId );
     uint64_t    GetSampleFileOffset(MP4SampleId sampleId);
@@ -204,6 +207,7 @@ protected:
 
     void CalculateBytesPerSample();
 
+    void FinishSgpd();
     void FinishSdtp();
 
 protected:
@@ -292,6 +296,9 @@ protected:
     MP4ChunkId  m_cachedSfoChunkId;
     MP4SampleId m_cachedSfoSampleId;
     uint32_t    m_cachedSfoSampleOffset;
+
+    // Preroll
+    bool m_writeRoll;
 
     string m_sdtpLog; // records frame types for H264 samples
 };

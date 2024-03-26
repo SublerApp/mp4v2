@@ -50,6 +50,7 @@ MP4Atom::MP4Atom(MP4File& file, const char* type)
 {
     SetType(type);
     m_unknownType = false;
+    m_invalidSize = false;
     m_start = 0;
     m_end = 0;
     m_largesizeMode = false;
@@ -132,6 +133,8 @@ MP4Atom* MP4Atom::ReadAtom(MP4File& file, MP4Atom* pParentAtom)
         file.Check64BitStatus(type);
     }
 
+    bool invalidSize = false;
+
     // extended type
     if (ATOMID(type) == ATOMID("uuid")) {
         file.ReadBytes(extendedType, sizeof(extendedType));
@@ -139,6 +142,19 @@ MP4Atom* MP4Atom::ReadAtom(MP4File& file, MP4Atom* pParentAtom)
     }
 
     if (dataSize == 0) {
+        // broken type
+        if (ATOMID(type) == 0x00) {
+            type[0] = 'f';
+            type[1] = 'r';
+            type[2] = 'e';
+            type[3] = 'e';
+
+            dataSize = 8;
+            hdrSize = 8;
+            printf("Type = 0x00 data size: %lld, hdr size: %d\n", dataSize, hdrSize);
+            invalidSize = true;
+        }
+    else
         // extends to EOF
         dataSize = file.GetSize() - pos;
     }
@@ -170,6 +186,7 @@ MP4Atom* MP4Atom::ReadAtom(MP4File& file, MP4Atom* pParentAtom)
 
         // skip to end of atom
         dataSize = pParentAtom->GetEnd() - pos - hdrSize;
+        invalidSize = true;
     }
 
     MP4Atom* pAtom = CreateAtom(file, pParentAtom, type);
@@ -178,6 +195,9 @@ MP4Atom* MP4Atom::ReadAtom(MP4File& file, MP4Atom* pParentAtom)
     pAtom->SetEnd(pos + hdrSize + dataSize);
     pAtom->SetLargesizeMode(largesizeMode);
     pAtom->SetSize(dataSize);
+    if (invalidSize) {
+        pAtom->SetInvalidSize(true);
+    }
     if (ATOMID(type) == ATOMID("uuid")) {
         pAtom->SetExtendedType(extendedType);
     }
@@ -229,7 +249,7 @@ bool MP4Atom::IsReasonableType(const char* type)
 // generic read
 void MP4Atom::Read()
 {
-    if (ATOMID(m_type) != 0 && m_size > 1000000) {
+    if (ATOMID(m_type) != 0 && m_size > 10000000) {
         log.verbose1f("%s: \"%s\": %s atom size %" PRIu64 " is suspect", __FUNCTION__,
                      m_File.GetFilename().c_str(), m_type, m_size);
     }
@@ -808,6 +828,8 @@ MP4Atom::factory( MP4File &file, MP4Atom* parent, const char* type )
                 return new MP4HntiAtom(file);
             if( ATOMID( type ) == ATOMID( "hinf" ))
                 return new MP4HinfAtom(file);
+            if( ATOMID( type ) == ATOMID( "titl" ))
+                return new MP4TitlAtom(file);
             for( const char* const* p = UDTA_ELEMENTS; *p; p++ )
                 if( strequal( type, *p ))
                     return new MP4UdtaElementAtom( file, type );
@@ -824,12 +846,20 @@ MP4Atom::factory( MP4File &file, MP4Atom* parent, const char* type )
             break;
 
         case 'a':
+            if( ATOMID(type) == ATOMID("alac") )
+                return new MP4ALACAtom( file );
+            if( ATOMID(type) == ATOMID("av01") )
+                return new MP4Av01Atom(file);
+            if( ATOMID(type) == ATOMID("av1C") )
+                return new MP4Av1CAtom(file);
             if( ATOMID(type) == ATOMID("avc1") )
                 return new MP4Avc1Atom(file);
             if( ATOMID(type) == ATOMID("ac-3") )
                 return new MP4Ac3Atom(file);
             if( ATOMID(type) == ATOMID("avcC") )
                 return new MP4AvcCAtom(file);
+            if( ATOMID(type) == ATOMID("avcE") )
+                return new MP4AvcEAtom(file);
             if( ATOMID(type) == ATOMID("alis") )
                 return new MP4UrlAtom( file, type );
             if( ATOMID(type) == ATOMID("alaw") )
@@ -839,12 +869,18 @@ MP4Atom::factory( MP4File &file, MP4Atom* parent, const char* type )
             break;
 
         case 'c':
+            if( ATOMID(type) == ATOMID("c608") )
+                return new MP4C608Atom(file);
             if( ATOMID(type) == ATOMID("chap") )
                 return new MP4TrefTypeAtom( file, type );
             if( ATOMID(type) == ATOMID("chpl") )
                 return new MP4ChplAtom(file);
+            if( ATOMID(type) == ATOMID("clli") )
+                return new MP4ClliAtom(file);
             if( ATOMID(type) == ATOMID("colr") )
                 return new MP4ColrAtom(file);
+            if( ATOMID(type) == ATOMID("clap") )
+                return new MP4ClapAtom(file);
             break;
 
         case 'd':
@@ -858,9 +894,23 @@ MP4Atom::factory( MP4File &file, MP4Atom* parent, const char* type )
                 return new MP4TrefTypeAtom( file, type );
             if( ATOMID(type) == ATOMID("dac3") )
                 return new MP4DAc3Atom(file);
+            if( ATOMID(type) == ATOMID("dec3") )
+                return new MP4DEc3Atom(file);
+            if( ATOMID(type) == ATOMID("dvcC") )
+                return new MP4DvcCAtom(file);
+            if( ATOMID(type) == ATOMID("dvvC") )
+                return new MP4DvvCAtom(file);
+            if( ATOMID(type) == ATOMID("dvwC") )
+                return new MP4DvwCAtom(file);
+            if( ATOMID(type) == ATOMID("dvh1") )
+                return new MP4Dvh1Atom(file);
+            if( ATOMID(type) == ATOMID("dvhe") )
+                return new MP4DvheAtom(file);
             break;
 
         case 'e':
+            if( ATOMID(type) == ATOMID("ec-3") )
+                return new MP4EAc3Atom(file);
             if( ATOMID(type) == ATOMID("elst") )
                 return new MP4ElstAtom(file);
             if( ATOMID(type) == ATOMID("enca") )
@@ -870,6 +920,12 @@ MP4Atom::factory( MP4File &file, MP4Atom* parent, const char* type )
             break;
 
         case 'f':
+            if( ATOMID(type) == ATOMID("fall") )
+                return new MP4TrefTypeAtom( file, type );
+            if( ATOMID(type) == ATOMID("folw") )
+                return new MP4TrefTypeAtom( file, type );
+            if( ATOMID(type) == ATOMID("forc") )
+                return new MP4TrefTypeAtom( file, type );
             if( ATOMID(type) == ATOMID("free") )
                 return new MP4FreeAtom(file);
             if( ATOMID(type) == ATOMID("ftyp") )
@@ -886,12 +942,20 @@ MP4Atom::factory( MP4File &file, MP4Atom* parent, const char* type )
         case 'h':
             if( ATOMID(type) == ATOMID("hdlr") )
                 return new MP4HdlrAtom(file);
+            if( ATOMID(type) == ATOMID("hev1") )
+                return new MP4Hev1Atom(file);
             if( ATOMID(type) == ATOMID("hint") )
                 return new MP4TrefTypeAtom( file, type );
             if( ATOMID(type) == ATOMID("h263") )
                 return new MP4VideoAtom( file, type );
             if( ATOMID(type) == ATOMID("href") )
                 return new MP4HrefAtom(file);
+            if( ATOMID(type) == ATOMID("hvc1") )
+                return new MP4Hvc1Atom(file);
+            if( ATOMID(type) == ATOMID("hvcC") )
+                return new MP4HvcCAtom(file);
+            if( ATOMID(type) == ATOMID("hvcE") )
+                return new MP4HvcEAtom(file);
             break;
 
         case 'i':
@@ -914,6 +978,8 @@ MP4Atom::factory( MP4File &file, MP4Atom* parent, const char* type )
             break;
 
         case 'm':
+            if( ATOMID(type) == ATOMID("mdcv") )
+                return new MP4MdcvAtom(file);
             if( ATOMID(type) == ATOMID("mdhd") )
                 return new MP4MdhdAtom(file);
             if( ATOMID(type) == ATOMID("mvhd") )
@@ -959,6 +1025,10 @@ MP4Atom::factory( MP4File &file, MP4Atom* parent, const char* type )
                 return new MP4AmrAtom( file, type );
             if( ATOMID(type) == ATOMID("sawb") )
                 return new MP4AmrAtom( file, type );
+            if( ATOMID(type) == ATOMID("sbgp") )
+                return new MP4SbgpAtom( file );
+            if( ATOMID(type) == ATOMID("sgpd") )
+                return new MP4SgpdAtom(file);
             if( ATOMID(type) == ATOMID("sdtp") )
                 return new MP4SdtpAtom(file);
             if( ATOMID(type) == ATOMID("stbl") )
@@ -984,6 +1054,8 @@ MP4Atom::factory( MP4File &file, MP4Atom* parent, const char* type )
             break;
 
         case 't':
+            if( ATOMID(type) == ATOMID("tagc") )
+                return new MP4TagcAtom(file);
             if( ATOMID(type) == ATOMID("text") )
                 return new MP4TextAtom(file);
             if( ATOMID(type) == ATOMID("tx3g") )
@@ -1012,6 +1084,13 @@ MP4Atom::factory( MP4File &file, MP4Atom* parent, const char* type )
         case 'v':
             if( ATOMID(type) == ATOMID("vmhd") )
                 return new MP4VmhdAtom(file);
+            if( ATOMID(type) == ATOMID("vttC") )
+                return new MP4VttCAtom(file);
+            break;
+
+        case 'w':
+            if( ATOMID(type) == ATOMID("wvtt") )
+                return new MP4WvttAtom(file);
             break;
 
         case 'y':

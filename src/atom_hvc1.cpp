@@ -16,7 +16,7 @@
  * Copyright (C) Cisco Systems Inc. 2004.  All Rights Reserved.
  *
  * Contributor(s):
- *      Bill May wmay@cisco.com
+ *      Damiano Galassi
  */
 
 #include "src/impl.h"
@@ -26,8 +26,8 @@ namespace impl {
 
 ///////////////////////////////////////////////////////////////////////////////
 
-MP4Avc1Atom::MP4Avc1Atom(MP4File &file)
-        : MP4Atom(file, "avc1")
+MP4Hvc1Atom::MP4Hvc1Atom(MP4File &file)
+        : MP4Atom(file, "hvc1")
 {
     AddReserved(*this, "reserved1", 6); /* 0 */
 
@@ -47,26 +47,27 @@ MP4Avc1Atom::MP4Avc1Atom(MP4File &file)
         new MP4StringProperty(*this, "compressorName");
     pProp->SetFixedLength(32);
     pProp->SetCountedFormat(true);
-    pProp->SetValue("H.264");
+    pProp->SetValue("H.265");
     AddProperty(pProp); /* 6 */
 
     AddReserved(*this, "reserved4", 4); /* 7 */
 
-    ExpectChildAtom("avcC", Required, OnlyOne);
+    ExpectChildAtom("hvcC", Required, OnlyOne);
     ExpectChildAtom("dvcC", Optional, OnlyOne);
     ExpectChildAtom("dvvC", Optional, OnlyOne);
     ExpectChildAtom("dvwC", Optional, OnlyOne);
-    ExpectChildAtom("avcE", Optional, OnlyOne);
+    ExpectChildAtom("hvcE", Optional, OnlyOne);
     ExpectChildAtom("btrt", Optional, OnlyOne);
     ExpectChildAtom("colr", Optional, OnlyOne);
     ExpectChildAtom("pasp", Optional, OnlyOne);
     ExpectChildAtom("clap", Optional, OnlyOne);
     ExpectChildAtom("mdcv", Optional, OnlyOne);
     ExpectChildAtom("clli", Optional, OnlyOne);
+    ExpectChildAtom("amve", Optional, OnlyOne);
     // for now ExpectChildAtom("m4ds", Optional, OnlyOne);
 }
 
-void MP4Avc1Atom::Generate()
+void MP4Hvc1Atom::Generate()
 {
     MP4Atom::Generate();
 

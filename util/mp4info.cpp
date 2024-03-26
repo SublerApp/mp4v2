@@ -199,6 +199,9 @@ extern "C" int main( int argc, char** argv )
             if ( tags->tvSeason ) {
                 fprintf( stdout, " TV Season: %u\n", *tags->tvSeason );
             }
+            if ( tags->itunesu) {
+                fprintf( stdout, " iTunes U: %s\n", *tags->itunesu ? "yes" : "no" );
+            }
             if ( tags->podcast) {
                 fprintf( stdout, " Podcast: %s\n", *tags->podcast ? "yes" : "no" );
             }

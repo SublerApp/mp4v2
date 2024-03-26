@@ -101,6 +101,10 @@ MP4StandardAtom::MP4StandardAtom (MP4File &file, const char *type) : MP4Atom(fil
     } else if (ATOMID(type) == ATOMID("edts")) {
         ExpectChildAtom("elst", Required, OnlyOne);
 
+    } else if (ATOMID(type) == ATOMID("elng")) {
+            AddVersionAndFlags();
+            AddProperty( new MP4StringProperty(*this, "extended_language"));
+
     } else if (ATOMID(type) == ATOMID("esds")) {
         AddVersionAndFlags();
         AddProperty(
@@ -171,6 +175,7 @@ MP4StandardAtom::MP4StandardAtom (MP4File &file, const char *type) : MP4Atom(fil
         ExpectChildAtom("tves", Optional, OnlyOne); /* TV epsidoe */
         ExpectChildAtom("desc", Optional, OnlyOne); /* description */
         ExpectChildAtom("ldes", Optional, OnlyOne); /* long description */
+        ExpectChildAtom("sdes", Optional, OnlyOne); /* series description */
         ExpectChildAtom("soal", Optional, OnlyOne); /* sort album */
         ExpectChildAtom("soar", Optional, OnlyOne); /* sort artist */
         ExpectChildAtom("soaa", Optional, OnlyOne); /* sort album artist */
@@ -179,6 +184,7 @@ MP4StandardAtom::MP4StandardAtom (MP4File &file, const char *type) : MP4Atom(fil
         ExpectChildAtom("sosn", Optional, OnlyOne); /* sort show */
         ExpectChildAtom("hdvd", Optional, OnlyOne); /* HD video */
         ExpectChildAtom("\251enc", Optional, OnlyOne); /* Encoded by */
+        ExpectChildAtom("itnu", Optional, OnlyOne); /* iTunes U flag */
         ExpectChildAtom("pcst", Optional, OnlyOne); /* Podcast flag */
         ExpectChildAtom("keyw", Optional, OnlyOne); /* Keywords (for podcasts?) */
         ExpectChildAtom("catg", Optional, OnlyOne); /* Category (for podcasts?) */
@@ -220,6 +226,7 @@ MP4StandardAtom::MP4StandardAtom (MP4File &file, const char *type) : MP4Atom(fil
         ExpectChildAtom("mdhd", Required, OnlyOne);
         ExpectChildAtom("hdlr", Required, OnlyOne);
         ExpectChildAtom("minf", Required, OnlyOne);
+        ExpectChildAtom("elng", Optional, OnlyOne);
 
     } else if (ATOMID(type) == ATOMID("meta")) { // iTunes
         AddVersionAndFlags(); /* 0, 1 */
@@ -247,7 +254,7 @@ MP4StandardAtom::MP4StandardAtom (MP4File &file, const char *type) : MP4Atom(fil
     } else if (ATOMID(type) == ATOMID("moov")) {
         ExpectChildAtom("mvhd", Required, OnlyOne);
         ExpectChildAtom("iods", Optional, OnlyOne);
-        ExpectChildAtom("trak", Required, Many);
+        ExpectChildAtom("trak", Optional, Many);
         ExpectChildAtom("udta", Optional, Many);
         ExpectChildAtom("mvex", Optional, OnlyOne);
 
@@ -378,6 +385,7 @@ MP4StandardAtom::MP4StandardAtom (MP4File &file, const char *type) : MP4Atom(fil
 
     } else if (ATOMID(type) == ATOMID("tref")) {
         ExpectChildAtom("chap", Optional, OnlyOne);
+        ExpectChildAtom("fall", Optional, OnlyOne);
         ExpectChildAtom("dpnd", Optional, OnlyOne);
         ExpectChildAtom("hint", Optional, OnlyOne);
         ExpectChildAtom("ipir", Optional, OnlyOne);

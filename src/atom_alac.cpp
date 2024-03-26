@@ -16,7 +16,7 @@
  * Copyright (C) Cisco Systems Inc. 2001.  All Rights Reserved.
  *
  * Contributor(s):
- *      Dave Mackie     dmackie@cisco.com
+ *      Edward Groenendaal      egroenen@cisco.com
  */
 
 #include "src/impl.h"
@@ -26,32 +26,29 @@ namespace impl {
 
 ///////////////////////////////////////////////////////////////////////////////
 
-MP4UdtaAtom::MP4UdtaAtom(MP4File &file)
-        : MP4Atom(file, "udta")
+
+MP4ALACAtom::MP4ALACAtom(MP4File &file)
+        : MP4Atom(file, "alac")
 {
-    ExpectChildAtom("chpl", Optional, OnlyOne);
-    ExpectChildAtom("cprt", Optional, Many);
-    ExpectChildAtom("hnti", Optional, OnlyOne);
-    ExpectChildAtom("meta", Optional, OnlyOne);
-    ExpectChildAtom("\251cpy", Optional, OnlyOne);
-    ExpectChildAtom("\251des", Optional, OnlyOne);
-    ExpectChildAtom("\251nam", Optional, OnlyOne);
-    ExpectChildAtom("\251cmt", Optional, OnlyOne);
-    ExpectChildAtom("\251prd", Optional, OnlyOne);
+    AddProperty( /* 0 */
+                new MP4Integer32Property(*this,"VersionFlags"));
 }
 
-void MP4UdtaAtom::Read()
+void MP4ALACAtom::Generate()
 {
-    if (ATOMID(m_pParentAtom->GetType()) == ATOMID("trak")) {
-        ExpectChildAtom("hinf", Optional, OnlyOne);
-        ExpectChildAtom("name", Optional, OnlyOne);
-        ExpectChildAtom("titl", Optional, Many);
-        ExpectChildAtom("tagc", Optional, Many);
-    }
+    AddProperty( /* 1 */
+                new MP4BytesProperty(*this,"AppleLosslessMagicCookie", 48));
 
+    MP4Atom::Generate();
+}
+
+void MP4ALACAtom::Read()
+{
+    AddProperty( /* 1 */
+                new MP4BytesProperty(*this,"AppleLosslessMagicCookie", m_size - 4));
     MP4Atom::Read();
-}
 
+}
 ///////////////////////////////////////////////////////////////////////////////
 
 }

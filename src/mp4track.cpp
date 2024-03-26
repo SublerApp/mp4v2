@@ -234,6 +234,8 @@ MP4Track::MP4Track(MP4File& file, MP4Atom& trakAtom)
     // edit list
     (void)InitEditListProperties();
 
+    (void)InitRollProperties();
+
     // was everything found?
     if (!success) {
         throw new EXCEPTION("invalid track");
@@ -575,6 +577,125 @@ void MP4Track::FinishWrite(uint32_t options)
             }
         }
     }
+
+    // write sample group
+    if (m_writeRoll) {
+        FinishSgpd();
+    }
+}
+
+void MP4Track::FinishSgpd() {
+
+    MP4SgpdAtom* sgpd = NULL;
+    MP4SbgpAtom* sbgp = NULL;
+
+    MP4Atom* stbl = m_trakAtom.FindAtom( "trak.mdia.minf.stbl" );
+
+    // There can be multiple sgpd and sbgp atoms,
+    // so be careful to do not touch the unrelated ones
+    for (uint32_t index = 0; index < stbl->GetNumberOfChildAtoms(); index++) {
+        MP4Atom* child = stbl->GetChildAtom(index);
+        const char* type = child->GetType();
+        if (!strcmp(type, "sgpd")) {
+            MP4SgpdAtom* candidate = (MP4SgpdAtom*)child;
+            MP4Integer32Property* pSgpdGroupingTypeProperty;
+            bool success = candidate->FindProperty(
+                                                   "sgpd.groupingType",
+                                                   (MP4Property**)&pSgpdGroupingTypeProperty);
+            if (success) {
+                if (pSgpdGroupingTypeProperty->GetValue() == 0x726f6c6c) {
+                    sgpd = candidate;
+                }
+            }
+        }
+        else if (!strcmp(type, "sbgp")) {
+            MP4SbgpAtom* candidate = (MP4SbgpAtom*)child;
+            MP4Integer32Property* pSbgpGroupingTypeProperty;
+            bool success = candidate->FindProperty(
+                                                   "sbgp.groupingType",
+                                                   (MP4Property**)&pSbgpGroupingTypeProperty);
+            if (success) {
+                if (pSbgpGroupingTypeProperty->GetValue() == 0x726f6c6c) {
+                    sbgp = candidate;
+                }
+            }
+        }
+    }
+
+    if( !sgpd )
+        sgpd = (MP4SgpdAtom*)AddAtom( "trak.mdia.minf.stbl", "sgpd" );
+
+    if( !sbgp )
+        sbgp = (MP4SbgpAtom*)AddAtom( "trak.mdia.minf.stbl", "sbgp" );
+
+    bool success = true;
+
+    MP4Integer32Property* pSbgpGroupingTypeProperty;
+    success &= sbgp->FindProperty(
+                                  "sbgp.groupingType",
+                                  (MP4Property**)&pSbgpGroupingTypeProperty);
+    if (success) {
+        pSbgpGroupingTypeProperty->SetValue(0x726f6c6c);
+    }
+
+    MP4Integer32Property* pSgpdGroupingTypeProperty;
+    success &= sgpd->FindProperty(
+                                  "sgpd.groupingType",
+                                  (MP4Property**)&pSgpdGroupingTypeProperty);
+    if (success) {
+        pSgpdGroupingTypeProperty->SetValue(0x726f6c6c);
+    }
+
+    MP4Integer32Property* pSbpgCountProperty = NULL;
+    MP4Integer32Property* pSbpgSampleCountProperty = NULL;
+    MP4Integer32Property* pSbpgGroupDescriptionIndexProperty = NULL;
+
+    bool haveSbpg = sbgp->FindProperty(
+                                       "sbgp.entryCount",
+                                       (MP4Property**)&pSbpgCountProperty);
+
+    if (haveSbpg) {
+        success &= sbgp->FindProperty(
+                                      "sbgp.entries.sampleCount",
+                                      (MP4Property**)&pSbpgSampleCountProperty);
+
+        success &= sbgp->FindProperty(
+                                      "sbgp.entries.groupDescriptionIndex",
+                                      (MP4Property**)&pSbpgGroupDescriptionIndexProperty);
+
+        if (success) {
+            if (pSbpgCountProperty->GetValue() == 0) {
+                pSbpgSampleCountProperty->AddValue(GetNumberOfSamples());
+                pSbpgGroupDescriptionIndexProperty->AddValue(1);
+                pSbpgCountProperty->IncrementValue();
+            }
+            else {
+            }
+        }
+    }
+
+    MP4Integer32Property* pSgpdCountProperty = NULL;
+    MP4Integer32Property* pSgpdGroupingType = NULL;
+
+    bool haveSgpd = sgpd->FindProperty(
+                                       "sgpd.entryCount",
+                                       (MP4Property**)&pSgpdCountProperty);
+
+    if (haveSgpd) {
+        success &= sgpd->FindProperty(
+                                      "sgpd.entries.groupingType",
+                                      (MP4Property**)&pSgpdGroupingType);
+
+        if (success) {
+            if (pSgpdCountProperty->GetValue() == 0) {
+                pSgpdGroupingType->AddValue(0xFFFF);
+                pSgpdCountProperty->IncrementValue();
+            }
+            else {
+
+            }
+        }
+    }
 }
 
 // Process sdtp log and add sdtp atom.
@@ -814,6 +935,7 @@ uint32_t MP4Track::GetMaxBitrate()
     MP4Timestamp thisSecStart = 0;
     MP4Timestamp lastSampleTime = 0;
     uint32_t lastSampleSize = 0;
+    MP4Timestamp *sttsCache = (MP4Timestamp *) malloc(sizeof(MP4Timestamp) * numSamples + 1);
 
     MP4SampleId thisSecStartSid = 1;
     for (MP4SampleId sid = 1; sid <= numSamples; sid++) {
@@ -822,6 +944,7 @@ uint32_t MP4Track::GetMaxBitrate()
 
         sampleSize = GetSampleSize(sid);
         GetSampleTimes(sid, &sampleTime, NULL);
+        sttsCache[sid] = sampleTime;
 
         if (sampleTime < thisSecStart + timeScale) {
             bytesThisSec += sampleSize;
@@ -853,8 +976,11 @@ uint32_t MP4Track::GetMaxBitrate()
             bytesThisSec -= GetSampleSize(thisSecStartSid);
             thisSecStartSid++;
             GetSampleTimes(thisSecStartSid, &thisSecStart, NULL);
+            thisSecStart = sttsCache[thisSecStartSid];
         }
     }
+
+    free(sttsCache);
 
     return maxBytesPerSec * 8;
 }
@@ -1657,6 +1783,57 @@ void MP4Track::RewriteChunk(MP4ChunkId chunkId,
 
 // map track type name aliases to official names
 
+void MP4Track::SetWantsRoll(bool wantsRoll)
+{
+    m_writeRoll = wantsRoll;
+}
+
+bool MP4Track::InitRollProperties()
+{
+    m_writeRoll = false;
+
+    MP4SgpdAtom* sgpd = NULL;
+    MP4SbgpAtom* sbgp = NULL;
+
+    MP4Atom* stbl = m_trakAtom.FindAtom( "trak.mdia.minf.stbl" );
+
+    // There can be multiple sgpd and sbgp atoms,
+    // so be careful to do not touch the unrelated ones
+    for (uint32_t index = 0; index < stbl->GetNumberOfChildAtoms(); index++) {
+        MP4Atom* child = stbl->GetChildAtom(index);
+        const char* type = child->GetType();
+        if (!strcmp(type, "sgpd")) {
+            MP4SgpdAtom* candidate = (MP4SgpdAtom*)child;
+            MP4Integer32Property* pSgpdGroupingTypeProperty;
+            bool success = candidate->FindProperty(
+                                                   "sgpd.groupingType",
+                                                   (MP4Property**)&pSgpdGroupingTypeProperty);
+            if (success) {
+                if (pSgpdGroupingTypeProperty->GetValue() == 0x726f6c6c) {
+                    sgpd = candidate;
+                }
+            }
+        }
+        else if (!strcmp(type, "sbgp")) {
+            MP4SbgpAtom* candidate = (MP4SbgpAtom*)child;
+            MP4Integer32Property* pSbgpGroupingTypeProperty;
+            bool success = candidate->FindProperty(
+                                                   "sbgp.groupingType",
+                                                   (MP4Property**)&pSbgpGroupingTypeProperty);
+            if (success) {
+                if (pSbgpGroupingTypeProperty->GetValue() == 0x726f6c6c) {
+                    sbgp = candidate;
+                }
+            }
+        }
+    }
+
+    if (sgpd && sbgp) {
+        m_writeRoll = true;
+    }
+
+    return sgpd && sbgp;
+}
 
 bool MP4Track::InitEditListProperties()
 {

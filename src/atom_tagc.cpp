@@ -16,7 +16,7 @@
  * Copyright (C) Cisco Systems Inc. 2001.  All Rights Reserved.
  *
  * Contributor(s):
- *      Dave Mackie     dmackie@cisco.com
+ *      Damiano Galassi     damiog@gmail.com
  */
 
 #include "src/impl.h"
@@ -26,31 +26,23 @@ namespace impl {
 
 ///////////////////////////////////////////////////////////////////////////////
 
-MP4UdtaAtom::MP4UdtaAtom(MP4File &file)
-        : MP4Atom(file, "udta")
+MP4TagcAtom::MP4TagcAtom(MP4File &file)
+        : MP4Atom(file, "tagc")
 {
-    ExpectChildAtom("chpl", Optional, OnlyOne);
-    ExpectChildAtom("cprt", Optional, Many);
-    ExpectChildAtom("hnti", Optional, OnlyOne);
-    ExpectChildAtom("meta", Optional, OnlyOne);
-    ExpectChildAtom("\251cpy", Optional, OnlyOne);
-    ExpectChildAtom("\251des", Optional, OnlyOne);
-    ExpectChildAtom("\251nam", Optional, OnlyOne);
-    ExpectChildAtom("\251cmt", Optional, OnlyOne);
-    ExpectChildAtom("\251prd", Optional, OnlyOne);
+       AddProperty( new MP4BytesProperty(*this,"tag", 0)); /* 0 */
 }
 
-void MP4UdtaAtom::Read()
+void MP4TagcAtom::Read()
 {
-    if (ATOMID(m_pParentAtom->GetType()) == ATOMID("trak")) {
-        ExpectChildAtom("hinf", Optional, OnlyOne);
-        ExpectChildAtom("name", Optional, OnlyOne);
-        ExpectChildAtom("titl", Optional, Many);
-        ExpectChildAtom("tagc", Optional, Many);
-    }
-
+    // calculate size of the metadata from the atom size
+    ((MP4BytesProperty*)m_pProperties[0])->SetValueSize(m_size);
     MP4Atom::Read();
 }
+
+/*void MP4TagcAtom::Dump(uint8_t indent, bool dumpImplicits)
+{
+
+}*/
 
 ///////////////////////////////////////////////////////////////////////////////
 

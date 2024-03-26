@@ -155,17 +155,111 @@ private:
     MP4AmrAtom &operator= ( const MP4AmrAtom &src );
 };
 
-// H.264 atoms
 
-class MP4Avc1Atom : public MP4Atom {
+// H.265 atoms
+
+class MP4Hvc1Atom : public MP4Atom {
 public:
-    MP4Avc1Atom(MP4File &file);
+    MP4Hvc1Atom(MP4File &file);
     void Generate();
 private:
-    MP4Avc1Atom();
-    MP4Avc1Atom( const MP4Avc1Atom &src );
-    MP4Avc1Atom &operator= ( const MP4Avc1Atom &src );
+    MP4Hvc1Atom();
+    MP4Hvc1Atom( const MP4Hvc1Atom &src );
+    MP4Hvc1Atom &operator= ( const MP4Hvc1Atom &src );
 };
+
+class MP4Hev1Atom : public MP4Atom {
+public:
+    MP4Hev1Atom(MP4File &file);
+    void Generate();
+private:
+    MP4Hev1Atom();
+    MP4Hev1Atom( const MP4Hev1Atom &src );
+    MP4Hev1Atom &operator= ( const MP4Hev1Atom &src );
+};
+
+class MP4HvcCAtom : public MP4Atom {
+public:
+    MP4HvcCAtom(MP4File &file);
+    void Generate();
+    void Clone(MP4HvcCAtom *dstAtom);
+    void Read();
+private:
+    MP4HvcCAtom();
+    MP4HvcCAtom( const MP4HvcCAtom &src );
+    MP4HvcCAtom &operator= ( const MP4HvcCAtom &src );
+};
+
+
+// Dolby Vision
+
+class MP4DvheAtom : public MP4Atom {
+public:
+    MP4DvheAtom(MP4File &file);
+    void Generate();
+private:
+    MP4DvheAtom();
+    MP4DvheAtom( const MP4DvheAtom &src );
+    MP4DvheAtom &operator= ( const MP4DvheAtom &src );
+};
+
+class MP4Dvh1Atom : public MP4Atom {
+public:
+    MP4Dvh1Atom(MP4File &file);
+    void Generate();
+private:
+    MP4Dvh1Atom();
+    MP4Dvh1Atom( const MP4Dvh1Atom &src );
+    MP4Dvh1Atom &operator= ( const MP4Dvh1Atom &src );
+};
+
+class MP4HvcEAtom : public MP4Atom {
+public:
+    MP4HvcEAtom(MP4File &file);
+    void Generate();
+    void Read();
+private:
+    MP4HvcEAtom();
+    MP4HvcEAtom( const MP4HvcEAtom &src );
+    MP4HvcEAtom &operator= ( const MP4HvcEAtom &src );
+};
+
+class MP4AvcEAtom : public MP4Atom {
+public:
+    MP4AvcEAtom(MP4File &file);
+    void Generate();
+    void Read();
+private:
+    MP4AvcEAtom();
+    MP4AvcEAtom( const MP4AvcEAtom &src );
+    MP4AvcEAtom &operator= ( const MP4AvcEAtom &src );
+};
+
+// AV1 atoms
+
+class MP4Av01Atom : public MP4Atom {
+public:
+    MP4Av01Atom(MP4File &file);
+    void Generate();
+private:
+    MP4Av01Atom();
+    MP4Av01Atom( const MP4Av01Atom &src );
+    MP4Av01Atom &operator= ( const MP4Av01Atom &src );
+};
+
+class MP4Av1CAtom : public MP4Atom {
+public:
+    MP4Av1CAtom(MP4File &file);
+    void Generate();
+    void Clone(MP4Av1CAtom *dstAtom);
+    void Read();
+private:
+    MP4Av1CAtom();
+    MP4Av1CAtom( const MP4Av1CAtom &src );
+    MP4Av1CAtom &operator= ( const MP4Av1CAtom &src );
+};
+
+// H.264 atoms
 
 class MP4AvcCAtom : public MP4Atom {
 public:
@@ -178,6 +272,15 @@ private:
     MP4AvcCAtom &operator= ( const MP4AvcCAtom &src );
 };
 
+class MP4Avc1Atom : public MP4Atom {
+public:
+    MP4Avc1Atom(MP4File &file);
+    void Generate();
+private:
+    MP4Avc1Atom();
+    MP4Avc1Atom( const MP4Avc1Atom &src );
+    MP4Avc1Atom &operator= ( const MP4Avc1Atom &src );
+};
 
 class MP4D263Atom : public MP4Atom {
 public:
@@ -249,6 +352,65 @@ private:
     MP4DAc3Atom();
     MP4DAc3Atom( const MP4DAc3Atom &src );
     MP4DAc3Atom &operator= ( const MP4DAc3Atom &src );
+};
+
+class MP4EAc3Atom : public MP4Atom {
+public:
+    MP4EAc3Atom(MP4File &file);
+    void Generate();
+private:
+    MP4EAc3Atom();
+    MP4EAc3Atom( const MP4EAc3Atom &src );
+    MP4EAc3Atom &operator= ( const MP4EAc3Atom &src );
+};
+
+class MP4DEc3Atom : public MP4Atom {
+public:
+    MP4DEc3Atom(MP4File &file);
+    void Generate();
+    void Read();
+    void Dump(uint8_t indent, bool dumpImplicits);
+private:
+    MP4DEc3Atom();
+    MP4DEc3Atom( const MP4DEc3Atom &src );
+    MP4DEc3Atom &operator= ( const MP4DEc3Atom &src );
+};
+
+class MP4DvcCAtom : public MP4Atom {
+public:
+    MP4DvcCAtom(MP4File &file);
+    void Generate();
+private:
+    MP4DvcCAtom();
+    MP4DvcCAtom( const MP4DvcCAtom &src );
+    MP4DvcCAtom &operator= ( const MP4DvcCAtom &src );
+};
+
+class MP4DvvCAtom : public MP4Atom {
+public:
+    MP4DvvCAtom(MP4File &file);
+    void Generate();
+private:
+    MP4DvvCAtom();
+    MP4DvvCAtom( const MP4DvvCAtom &src );
+    MP4DvvCAtom &operator= ( const MP4DvvCAtom &src );
+};
+
+class MP4DvwCAtom : public MP4Atom {
+public:
+    MP4DvwCAtom(MP4File &file);
+    void Generate();
+private:
+    MP4DvwCAtom();
+    MP4DvwCAtom( const MP4DvwCAtom &src );
+    MP4DvwCAtom &operator= ( const MP4DvwCAtom &src );
+};
+
+class MP4ALACAtom : public MP4Atom {
+public:
+    MP4ALACAtom(MP4File &file);
+    void Generate();
+    void Read();
 };
 
 class MP4Mp4sAtom : public MP4Atom {
@@ -548,6 +710,39 @@ private:
     MP4Stz2Atom &operator= ( const MP4Stz2Atom &src );
 };
 
+class MP4SbgpAtom : public MP4Atom {
+public:
+    MP4SbgpAtom(MP4File &file);
+    void Generate();
+    void Read();
+protected:
+    void AddProperties(uint8_t version);
+private:
+    MP4SbgpAtom();
+    MP4SbgpAtom( const MP4SbgpAtom &src );
+    MP4SbgpAtom &operator= ( const MP4SbgpAtom &src );
+};
+
+class MP4SgpdAtom : public MP4Atom {
+public:
+    MP4SgpdAtom(MP4File &file);
+    void Generate();
+    void Read();
+protected:
+    void AddProperties(uint8_t version);
+    void AddTableProperties(uint8_t version, uint32_t defaultLength);
+private:
+    MP4SgpdAtom();
+    MP4SgpdAtom( const MP4SgpdAtom &src );
+    MP4SgpdAtom &operator= ( const MP4SgpdAtom &src );
+};
+
+class MP4TagcAtom : public MP4Atom {
+public:
+    MP4TagcAtom(MP4File &file);
+    void Read();
+};
+
 class MP4TextAtom : public MP4Atom {
 public:
     MP4TextAtom(MP4File &file);
@@ -573,6 +768,12 @@ private:
     MP4Tx3gAtom();
     MP4Tx3gAtom( const MP4Tx3gAtom &src );
     MP4Tx3gAtom &operator= ( const MP4Tx3gAtom &src );
+};
+
+class MP4C608Atom : public MP4Atom {
+public:
+    MP4C608Atom(MP4File &file);
+    void Generate();
 };
 
 class MP4FtabAtom : public MP4Atom {
@@ -651,6 +852,27 @@ private:
     MP4VmhdAtom &operator= ( const MP4VmhdAtom &src );
 };
 
+class MP4VttCAtom : public MP4Atom {
+public:
+    MP4VttCAtom(MP4File &file);
+    void Generate();
+    void Read();
+private:
+    MP4VttCAtom();
+    MP4VttCAtom( const MP4VttCAtom &src );
+    MP4VttCAtom &operator= ( const MP4VttCAtom &src );
+};
+
+class MP4WvttAtom : public MP4Atom {
+public:
+    MP4WvttAtom(MP4File &file);
+    void Generate();
+private:
+    MP4WvttAtom();
+    MP4WvttAtom( const MP4WvttAtom &src );
+    MP4WvttAtom &operator= ( const MP4WvttAtom &src );
+};
+
 class MP4HrefAtom : public MP4Atom {
 public:
     MP4HrefAtom(MP4File &file);
@@ -671,14 +893,56 @@ private:
     MP4PaspAtom &operator= ( const MP4PaspAtom &src );
 };
 
+class MP4ClapAtom : public MP4Atom {
+public:
+    MP4ClapAtom(MP4File &file);
+    void Generate();
+private:
+    MP4ClapAtom();
+    MP4ClapAtom( const MP4ClapAtom &src );
+    MP4ClapAtom &operator= ( const MP4ClapAtom &src );
+};
+
 class MP4ColrAtom : public MP4Atom {
 public:
     MP4ColrAtom(MP4File &file);
+    void AddProperties(const string type);
     void Generate();
+    void Read();
 private:
     MP4ColrAtom();
     MP4ColrAtom( const MP4ColrAtom &src );
     MP4ColrAtom &operator= ( const MP4ColrAtom &src );
+};
+
+class MP4ClliAtom : public MP4Atom {
+public:
+    MP4ClliAtom(MP4File &file);
+    void Generate();
+private:
+    MP4ClliAtom();
+    MP4ClliAtom( const MP4ClliAtom &src );
+    MP4ClliAtom &operator= ( const MP4ClliAtom &src );
+};
+
+class MP4MdcvAtom : public MP4Atom {
+public:
+    MP4MdcvAtom(MP4File &file);
+    void Generate();
+private:
+    MP4MdcvAtom();
+    MP4MdcvAtom( const MP4MdcvAtom &src );
+    MP4MdcvAtom &operator= ( const MP4MdcvAtom &src );
+};
+
+class MP4AmveAtom : public MP4Atom {
+public:
+    MP4AmveAtom(MP4File &file);
+    void Generate();
+private:
+    MP4AmveAtom();
+    MP4AmveAtom( const MP4AmveAtom &src );
+    MP4AmveAtom &operator= ( const MP4AmveAtom &src );
 };
 
 class IPodUUIDAtom : public MP4Atom {
@@ -786,6 +1050,37 @@ private:
     MP4NameAtom();
     MP4NameAtom( const MP4NameAtom &src );
     MP4NameAtom &operator= ( const MP4NameAtom &src );
+};
+
+/// iTMF tnam-atom.
+class MP4TnamAtom : public MP4Atom
+{
+public:
+    MP4TnamAtom(MP4File &file);
+    void Read();
+
+    MP4Integer32Property& reserved1;
+    MP4Integer16Property& language;
+    MP4BytesProperty&     value;
+private:
+    MP4TnamAtom();
+    MP4TnamAtom( const MP4TnamAtom &src );
+    MP4TnamAtom &operator= ( const MP4TnamAtom &src );
+};
+
+class MP4TitlAtom : public MP4Atom
+{
+public:
+    MP4TitlAtom(MP4File &file);
+    void Read();
+
+    MP4Integer32Property& reserved1;
+    MP4Integer16Property& language;
+    MP4BytesProperty&     value;
+private:
+    MP4TitlAtom();
+    MP4TitlAtom( const MP4TitlAtom &src );
+    MP4TitlAtom &operator= ( const MP4TitlAtom &src );
 };
 
 /// iTMF data-atom.

@@ -14,9 +14,6 @@
  * The Initial Developer of the Original Code is Cisco Systems Inc.
  * Portions created by Cisco Systems Inc. are
  * Copyright (C) Cisco Systems Inc. 2001.  All Rights Reserved.
- *
- * Contributor(s):
- *      Dave Mackie     dmackie@cisco.com
  */
 
 #include "src/impl.h"
@@ -26,30 +23,21 @@ namespace impl {
 
 ///////////////////////////////////////////////////////////////////////////////
 
-MP4UdtaAtom::MP4UdtaAtom(MP4File &file)
-        : MP4Atom(file, "udta")
+MP4C608Atom::MP4C608Atom(MP4File &file)
+        : MP4Atom(file, "c608")
 {
-    ExpectChildAtom("chpl", Optional, OnlyOne);
-    ExpectChildAtom("cprt", Optional, Many);
-    ExpectChildAtom("hnti", Optional, OnlyOne);
-    ExpectChildAtom("meta", Optional, OnlyOne);
-    ExpectChildAtom("\251cpy", Optional, OnlyOne);
-    ExpectChildAtom("\251des", Optional, OnlyOne);
-    ExpectChildAtom("\251nam", Optional, OnlyOne);
-    ExpectChildAtom("\251cmt", Optional, OnlyOne);
-    ExpectChildAtom("\251prd", Optional, OnlyOne);
+    AddReserved(*this, "reserved1", 4); /* 0 */
+    AddReserved(*this, "reserved2", 2); /* 1 */
+
+    AddProperty(new MP4Integer16Property(*this, "dataReferenceIndex")); /* 2 */
 }
 
-void MP4UdtaAtom::Read()
+void MP4C608Atom::Generate()
 {
-    if (ATOMID(m_pParentAtom->GetType()) == ATOMID("trak")) {
-        ExpectChildAtom("hinf", Optional, OnlyOne);
-        ExpectChildAtom("name", Optional, OnlyOne);
-        ExpectChildAtom("titl", Optional, Many);
-        ExpectChildAtom("tagc", Optional, Many);
-    }
+    // generate children
+    MP4Atom::Generate();
 
-    MP4Atom::Read();
+    ((MP4Integer16Property*)m_pProperties[2])->SetValue(1);
 }
 
 ///////////////////////////////////////////////////////////////////////////////

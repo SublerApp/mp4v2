@@ -133,6 +133,46 @@ MP4NameAtom::Read()
 
 ///////////////////////////////////////////////////////////////////////////////
 
+MP4TnamAtom::MP4TnamAtom(MP4File &file)
+    : MP4Atom     ( file, "tnam" )
+    , reserved1   ( *new MP4Integer32Property( *this, "reserved1" ))
+    , language    ( *new MP4Integer16Property( *this, "language" ))
+    , value       ( *new MP4BytesProperty( *this, "value", 1 ))
+{
+    AddProperty( &reserved1 );
+    AddProperty( &language );
+    AddProperty( &value );
+}
+
+void
+MP4TnamAtom::Read()
+{
+    value.SetValueSize( m_size - 6 );
+    MP4Atom::Read();
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+MP4TitlAtom::MP4TitlAtom(MP4File &file)
+    : MP4Atom     ( file, "titl" )
+    , reserved1   ( *new MP4Integer32Property( *this, "reserved1" ))
+    , language    ( *new MP4Integer16Property( *this, "language" ))
+    , value       ( *new MP4BytesProperty( *this, "value", 1 ))
+{
+    AddProperty( &reserved1 );
+    AddProperty( &language );
+    AddProperty( &value );
+}
+
+void
+MP4TitlAtom::Read()
+{
+    value.SetValueSize( m_size - 6 );
+    MP4Atom::Read();
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
 MP4UdtaElementAtom::MP4UdtaElementAtom( MP4File &file, const char* type )
     : MP4Atom ( file, type )
     , value   ( *new MP4BytesProperty( *this, "value" ))
