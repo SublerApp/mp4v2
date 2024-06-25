@@ -53,6 +53,8 @@ MP4Av01Atom::MP4Av01Atom(MP4File &file)
     AddReserved(*this, "reserved4", 4); /* 7 */
 
     ExpectChildAtom("av1C", Required, OnlyOne);
+    ExpectChildAtom("dvcC", Optional, OnlyOne);
+    ExpectChildAtom("dvvC", Optional, OnlyOne);
     ExpectChildAtom("btrt", Optional, OnlyOne);
     ExpectChildAtom("colr", Optional, OnlyOne);
     ExpectChildAtom("pasp", Optional, OnlyOne);
