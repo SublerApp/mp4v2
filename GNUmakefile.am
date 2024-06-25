@@ -94,6 +94,9 @@ libmp4v2_la_SOURCES = \
     src/atom_video.cpp                   \
     src/atom_vmhd.cpp                    \
     src/atom_vttC.cpp                    \
+    src/atom_vvc1.cpp                    \
+    src/atom_vvcC.cpp                    \
+    src/atom_vvic.cpp                    \
     src/atom_wvtt.cpp                    \
     src/atoms.h                          \
     src/cmeta.cpp                        \

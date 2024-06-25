@@ -191,6 +191,41 @@ private:
 };
 
 
+// VVC atoms
+
+class MP4Vvc1Atom : public MP4Atom {
+public:
+    MP4Vvc1Atom(MP4File &file);
+    void Generate();
+private:
+    MP4Vvc1Atom();
+    MP4Vvc1Atom( const MP4Vvc1Atom &src );
+    MP4Vvc1Atom &operator= ( const MP4Vvc1Atom &src );
+};
+
+class MP4VvicAtom : public MP4Atom {
+public:
+    MP4VvicAtom(MP4File &file);
+    void Generate();
+private:
+    MP4VvicAtom();
+    MP4VvicAtom( const MP4VvicAtom &src );
+    MP4VvicAtom &operator= ( const MP4VvicAtom &src );
+};
+
+class MP4VvcCAtom : public MP4Atom {
+public:
+    MP4VvcCAtom(MP4File &file);
+    void Generate();
+    void Clone(MP4VvcCAtom *dstAtom);
+    void Read();
+private:
+    MP4VvcCAtom();
+    MP4VvcCAtom( const MP4VvcCAtom &src );
+    MP4VvcCAtom &operator= ( const MP4VvcCAtom &src );
+};
+
+
 // Dolby Vision
 
 class MP4DvheAtom : public MP4Atom {

@@ -370,6 +370,15 @@ public:
         uint32_t avgBitrate,
         uint32_t maxBitrate);
 
+    MP4TrackId AddVVCVideoTrack(
+        uint32_t timeScale,
+        MP4Duration sampleDuration,
+        uint16_t width,
+        uint16_t height,
+        const uint8_t *magicCookie,
+        uint32_t magicCookieSize,
+        bool complete);
+
     MP4TrackId AddH265VideoTrack(
         uint32_t timeScale,
         MP4Duration sampleDuration,

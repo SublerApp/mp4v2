@@ -2129,6 +2129,43 @@ MP4TrackId MP4File::AddAV1VideoTrack(
     return trackId;
 }
 
+MP4TrackId MP4File::AddVVCVideoTrack(
+                                     uint32_t timeScale,
+                                     MP4Duration sampleDuration,
+                                     uint16_t width,
+                                     uint16_t height,
+                                     const uint8_t *magicCookie,
+                                     uint32_t magicCookieSize,
+                                     bool complete)
+{
+    MP4TrackId trackId = MP4_INVALID_TRACK_ID;
+
+    const char *videoType = complete ? "vvc1" : "vvic";
+
+    trackId = AddVideoTrackDefault(timeScale,
+                                   sampleDuration,
+                                   width,
+                                   height,
+                                   videoType);
+
+    MP4Atom *atom = FindAtom(MakeTrackName(trackId, "mdia.minf.stbl.stsd"));
+
+    if (atom) {
+        MP4Atom *child = atom->FindChildAtom(videoType);
+
+        if (child) {
+            ((MP4Integer16Property*)child->GetProperty(3))->SetValue(width);
+            ((MP4Integer16Property*)child->GetProperty(4))->SetValue(height);
+
+            MP4Atom *hvcCAtom = child->FindChildAtom("vvcC");
+
+            ((MP4BytesProperty*)hvcCAtom->GetProperty(0))->SetValue(magicCookie, magicCookieSize);
+        }
+    }
+
+    return trackId;
+}
+
 MP4TrackId MP4File::AddH265VideoTrack(
                                       uint32_t timeScale,
                                       MP4Duration sampleDuration,

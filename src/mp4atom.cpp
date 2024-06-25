@@ -1088,6 +1088,12 @@ MP4Atom::factory( MP4File &file, MP4Atom* parent, const char* type )
                 return new MP4VmhdAtom(file);
             if( ATOMID(type) == ATOMID("vttC") )
                 return new MP4VttCAtom(file);
+            if( ATOMID(type) == ATOMID("vvc1") )
+                return new MP4Vvc1Atom(file);
+            if( ATOMID(type) == ATOMID("vvcC") )
+                return new MP4VvcCAtom(file);
+            if( ATOMID(type) == ATOMID("vvic") )
+                return new MP4VvicAtom(file);
             break;
 
         case 'w':

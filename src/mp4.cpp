@@ -1470,6 +1470,38 @@ MP4FileHandle MP4ModifyCallbacks(const MP4IOCallbacks* callbacks,
         return MP4_INVALID_TRACK_ID;
     }
 
+    MP4TrackId MP4AddVVCVideoTrack(MP4FileHandle hFile,
+                                   uint32_t timeScale,
+                                   MP4Duration sampleDuration,
+                                   uint16_t width,
+                                   uint16_t height,
+                                   const uint8_t *magicCookie,
+                                   uint32_t magicCookieSize,
+                                   bool complete)
+    {
+        if (MP4_IS_VALID_FILE_HANDLE(hFile)) {
+            try {
+                MP4File *pFile = (MP4File *)hFile;
+
+                return pFile->AddVVCVideoTrack(timeScale,
+                                               sampleDuration,
+                                               width,
+                                               height,
+                                               magicCookie,
+                                               magicCookieSize,
+                                               complete);
+            }
+            catch( Exception* x ) {
+                mp4v2::impl::log.errorf(*x);
+                delete x;
+            }
+            catch( ... ) {
+                mp4v2::impl::log.errorf( "%s: failed", __FUNCTION__ );
+            }
+        }
+        return MP4_INVALID_TRACK_ID;
+    }
+
     MP4TrackId MP4AddH265VideoTrack(MP4FileHandle hFile,
                                     uint32_t timeScale,
                                     MP4Duration sampleDuration,
