@@ -122,6 +122,23 @@ bool MP4ReadSample(
     MP4Duration*  pRenderingOffset DEFAULT(NULL),
     bool*         pIsSyncSample DEFAULT(NULL) );
 
+MP4V2_EXPORT
+bool MP4ReadSampleSampleDependency(
+    /* input parameters */
+    MP4FileHandle hFile,
+    MP4TrackId    trackId,
+    MP4SampleId   sampleId,
+    /* input/output parameters */
+    uint8_t** ppBytes,
+    uint32_t* pNumBytes,
+    /* output parameters */
+    MP4Timestamp* pStartTime DEFAULT(NULL),
+    MP4Duration*  pDuration DEFAULT(NULL),
+    MP4Duration*  pRenderingOffset DEFAULT(NULL),
+    bool*         pIsSyncSample DEFAULT(NULL),
+    bool*         hasDependencyFlags DEFAULT(NULL),
+    uint32_t*     dependencyFlags DEFAULT(NULL));
+
 /** Read a track sample based on a specified time.
  *
  *  MP4ReadSampleFromTime is similar to MP4ReadSample() except the sample
