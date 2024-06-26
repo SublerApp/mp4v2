@@ -214,13 +214,31 @@ set(MP4V2_SOURCE_FILES
         src/qtff/PictureAspectRatioBox.cpp
         src/3gp.cpp
         src/atom_ac3.cpp
+        src/atom_eac3.cpp
         src/atom_amr.cpp
+        src/atom_amve.cpp
+        src/atom_av01.cpp
+        src/atom_av1C.cpp
         src/atom_avc1.cpp
         src/atom_avcC.cpp
+        src/atom_avcE.cpp
+        src/atom_hvc1.cpp
+        src/atom_hev1.cpp
+        src/atom_hvcC.cpp
+        src/atom_hvcE.cpp
+        src/atom_c608.cpp
+        src/atom_clli.cpp
+        src/atom_alac.cpp
         src/atom_chpl.cpp
         src/atom_colr.cpp
         src/atom_d263.cpp
         src/atom_dac3.cpp
+        src/atom_dec3.cpp
+        src/atom_dvcC.cpp
+        src/atom_dvh1.cpp
+        src/atom_dvhe.cpp
+        src/atom_dvvC.cpp
+        src/atom_dvwC.cpp   
         src/atom_damr.cpp
         src/atom_dref.cpp
         src/atom_elst.cpp
@@ -235,6 +253,7 @@ set(MP4V2_SOURCE_FILES
         src/atom_hnti.cpp
         src/atom_href.cpp
         src/atom_mdat.cpp
+        src/atom_mdcv.cpp
         src/atom_mdhd.cpp
         src/atom_meta.cpp
         src/atom_mp4s.cpp
@@ -243,11 +262,14 @@ set(MP4V2_SOURCE_FILES
         src/atom_nmhd.cpp
         src/atom_ohdr.cpp
         src/atom_pasp.cpp
+        src/atom_clap.cpp
         src/atom_root.cpp
         src/atom_rtp.cpp
         src/atom_s263.cpp
+        src/atom_sbgp.cpp
         src/atom_sdp.cpp
         src/atom_sdtp.cpp
+        src/atom_sgpd.cpp
         src/atom_smi.cpp
         src/atom_sound.cpp
         src/atom_standard.cpp
@@ -258,6 +280,7 @@ set(MP4V2_SOURCE_FILES
         src/atom_stsz.cpp
         src/atom_stz2.cpp
         src/atom_text.cpp
+        src/atom_tagc.cpp
         src/atom_tfhd.cpp
         src/atom_tkhd.cpp
         src/atom_treftype.cpp
@@ -269,6 +292,11 @@ set(MP4V2_SOURCE_FILES
         src/atom_uuid.cpp
         src/atom_video.cpp
         src/atom_vmhd.cpp
+        src/atom_vttC.cpp
+        src/atom_vvc1.cpp
+        src/atom_vvcC.cpp
+        src/atom_vvic.cpp
+        src/atom_wvtt.cpp
         src/cmeta.cpp
         src/descriptors.cpp
         src/enum.tcc
