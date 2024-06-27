@@ -3,10 +3,38 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A9180D8B2C2C7108007F6410 /* atom_alac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9180D8A2C2C7108007F6410 /* atom_alac.cpp */; };
+		A9180D8D2C2C7115007F6410 /* atom_amve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9180D8C2C2C7115007F6410 /* atom_amve.cpp */; };
+		A9180D902C2C711B007F6410 /* atom_av01.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9180D8E2C2C711B007F6410 /* atom_av01.cpp */; };
+		A9180D912C2C711B007F6410 /* atom_av1C.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9180D8F2C2C711B007F6410 /* atom_av1C.cpp */; };
+		A9180D932C2C7122007F6410 /* atom_avcE.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9180D922C2C7122007F6410 /* atom_avcE.cpp */; };
+		A9180D952C2C7143007F6410 /* atom_c608.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9180D942C2C7143007F6410 /* atom_c608.cpp */; };
+		A9180D972C2C714C007F6410 /* atom_clap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9180D962C2C714C007F6410 /* atom_clap.cpp */; };
+		A9180D992C2C7153007F6410 /* atom_clli.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9180D982C2C7152007F6410 /* atom_clli.cpp */; };
+		A9180D9B2C2C715D007F6410 /* atom_dec3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9180D9A2C2C715D007F6410 /* atom_dec3.cpp */; };
+		A9180DA12C2C7168007F6410 /* atom_dvhe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9180D9C2C2C7168007F6410 /* atom_dvhe.cpp */; };
+		A9180DA22C2C7168007F6410 /* atom_dvcC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9180D9D2C2C7168007F6410 /* atom_dvcC.cpp */; };
+		A9180DA32C2C7168007F6410 /* atom_dvwC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9180D9E2C2C7168007F6410 /* atom_dvwC.cpp */; };
+		A9180DA42C2C7168007F6410 /* atom_dvvC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9180D9F2C2C7168007F6410 /* atom_dvvC.cpp */; };
+		A9180DA52C2C7168007F6410 /* atom_dvh1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9180DA02C2C7168007F6410 /* atom_dvh1.cpp */; };
+		A9180DA72C2C7173007F6410 /* atom_eac3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9180DA62C2C7173007F6410 /* atom_eac3.cpp */; };
+		A9180DA92C2C7182007F6410 /* atom_hev1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9180DA82C2C7182007F6410 /* atom_hev1.cpp */; };
+		A9180DAD2C2C718E007F6410 /* atom_hvc1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9180DAA2C2C718E007F6410 /* atom_hvc1.cpp */; };
+		A9180DAE2C2C718E007F6410 /* atom_hvcC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9180DAB2C2C718E007F6410 /* atom_hvcC.cpp */; };
+		A9180DAF2C2C718E007F6410 /* atom_hvcE.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9180DAC2C2C718E007F6410 /* atom_hvcE.cpp */; };
+		A9180DB12C2C71A0007F6410 /* atom_sbgp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9180DB02C2C71A0007F6410 /* atom_sbgp.cpp */; };
+		A9180DB32C2C71A6007F6410 /* atom_sgpd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9180DB22C2C71A6007F6410 /* atom_sgpd.cpp */; };
+		A9180DB92C2C71BE007F6410 /* atom_vvc1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9180DB42C2C71BE007F6410 /* atom_vvc1.cpp */; };
+		A9180DBA2C2C71BE007F6410 /* atom_vvcC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9180DB52C2C71BE007F6410 /* atom_vvcC.cpp */; };
+		A9180DBB2C2C71BE007F6410 /* atom_vttC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9180DB62C2C71BE007F6410 /* atom_vttC.cpp */; };
+		A9180DBC2C2C71BF007F6410 /* atom_wvtt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9180DB72C2C71BE007F6410 /* atom_wvtt.cpp */; };
+		A9180DBD2C2C71BF007F6410 /* atom_vvic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9180DB82C2C71BE007F6410 /* atom_vvic.cpp */; };
+		A9180DBF2C2C71F1007F6410 /* atom_mdcv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9180DBE2C2C71F1007F6410 /* atom_mdcv.cpp */; };
+		A9180DC12C2C7207007F6410 /* atom_tagc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9180DC02C2C7207007F6410 /* atom_tagc.cpp */; };
 		E17F2FFA27A74CCA00F7FBDF /* atom_ac3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E17F2F5127A7460B00F7FBDF /* atom_ac3.cpp */; };
 		E17F2FFB27A74CCA00F7FBDF /* 3gp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E17F2F2F27A7460900F7FBDF /* 3gp.cpp */; };
 		E17F2FFD27A74CD400F7FBDF /* atom_stsz.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E17F2F6227A7460B00F7FBDF /* atom_stsz.cpp */; };
@@ -455,6 +483,34 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A9180D8A2C2C7108007F6410 /* atom_alac.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = atom_alac.cpp; path = ../src/atom_alac.cpp; sourceTree = "<group>"; };
+		A9180D8C2C2C7115007F6410 /* atom_amve.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = atom_amve.cpp; path = ../src/atom_amve.cpp; sourceTree = "<group>"; };
+		A9180D8E2C2C711B007F6410 /* atom_av01.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = atom_av01.cpp; path = ../src/atom_av01.cpp; sourceTree = "<group>"; };
+		A9180D8F2C2C711B007F6410 /* atom_av1C.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = atom_av1C.cpp; path = ../src/atom_av1C.cpp; sourceTree = "<group>"; };
+		A9180D922C2C7122007F6410 /* atom_avcE.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = atom_avcE.cpp; path = ../src/atom_avcE.cpp; sourceTree = "<group>"; };
+		A9180D942C2C7143007F6410 /* atom_c608.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = atom_c608.cpp; path = ../src/atom_c608.cpp; sourceTree = "<group>"; };
+		A9180D962C2C714C007F6410 /* atom_clap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = atom_clap.cpp; path = ../src/atom_clap.cpp; sourceTree = "<group>"; };
+		A9180D982C2C7152007F6410 /* atom_clli.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = atom_clli.cpp; path = ../src/atom_clli.cpp; sourceTree = "<group>"; };
+		A9180D9A2C2C715D007F6410 /* atom_dec3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = atom_dec3.cpp; path = ../src/atom_dec3.cpp; sourceTree = "<group>"; };
+		A9180D9C2C2C7168007F6410 /* atom_dvhe.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = atom_dvhe.cpp; path = ../src/atom_dvhe.cpp; sourceTree = "<group>"; };
+		A9180D9D2C2C7168007F6410 /* atom_dvcC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = atom_dvcC.cpp; path = ../src/atom_dvcC.cpp; sourceTree = "<group>"; };
+		A9180D9E2C2C7168007F6410 /* atom_dvwC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = atom_dvwC.cpp; path = ../src/atom_dvwC.cpp; sourceTree = "<group>"; };
+		A9180D9F2C2C7168007F6410 /* atom_dvvC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = atom_dvvC.cpp; path = ../src/atom_dvvC.cpp; sourceTree = "<group>"; };
+		A9180DA02C2C7168007F6410 /* atom_dvh1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = atom_dvh1.cpp; path = ../src/atom_dvh1.cpp; sourceTree = "<group>"; };
+		A9180DA62C2C7173007F6410 /* atom_eac3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = atom_eac3.cpp; path = ../src/atom_eac3.cpp; sourceTree = "<group>"; };
+		A9180DA82C2C7182007F6410 /* atom_hev1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = atom_hev1.cpp; path = ../src/atom_hev1.cpp; sourceTree = "<group>"; };
+		A9180DAA2C2C718E007F6410 /* atom_hvc1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = atom_hvc1.cpp; path = ../src/atom_hvc1.cpp; sourceTree = "<group>"; };
+		A9180DAB2C2C718E007F6410 /* atom_hvcC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = atom_hvcC.cpp; path = ../src/atom_hvcC.cpp; sourceTree = "<group>"; };
+		A9180DAC2C2C718E007F6410 /* atom_hvcE.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = atom_hvcE.cpp; path = ../src/atom_hvcE.cpp; sourceTree = "<group>"; };
+		A9180DB02C2C71A0007F6410 /* atom_sbgp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = atom_sbgp.cpp; path = ../src/atom_sbgp.cpp; sourceTree = "<group>"; };
+		A9180DB22C2C71A6007F6410 /* atom_sgpd.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = atom_sgpd.cpp; path = ../src/atom_sgpd.cpp; sourceTree = "<group>"; };
+		A9180DB42C2C71BE007F6410 /* atom_vvc1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = atom_vvc1.cpp; path = ../src/atom_vvc1.cpp; sourceTree = "<group>"; };
+		A9180DB52C2C71BE007F6410 /* atom_vvcC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = atom_vvcC.cpp; path = ../src/atom_vvcC.cpp; sourceTree = "<group>"; };
+		A9180DB62C2C71BE007F6410 /* atom_vttC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = atom_vttC.cpp; path = ../src/atom_vttC.cpp; sourceTree = "<group>"; };
+		A9180DB72C2C71BE007F6410 /* atom_wvtt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = atom_wvtt.cpp; path = ../src/atom_wvtt.cpp; sourceTree = "<group>"; };
+		A9180DB82C2C71BE007F6410 /* atom_vvic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = atom_vvic.cpp; path = ../src/atom_vvic.cpp; sourceTree = "<group>"; };
+		A9180DBE2C2C71F1007F6410 /* atom_mdcv.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = atom_mdcv.cpp; path = ../src/atom_mdcv.cpp; sourceTree = "<group>"; };
+		A9180DC02C2C7207007F6410 /* atom_tagc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = atom_tagc.cpp; path = ../src/atom_tagc.cpp; sourceTree = "<group>"; };
 		E17F2F1827A745BC00F7FBDF /* ColorParameterBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColorParameterBox.h; path = ../src/qtff/ColorParameterBox.h; sourceTree = "<group>"; };
 		E17F2F1927A745BC00F7FBDF /* PictureAspectRatioBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PictureAspectRatioBox.cpp; path = ../src/qtff/PictureAspectRatioBox.cpp; sourceTree = "<group>"; };
 		E17F2F1A27A745BC00F7FBDF /* coding.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = coding.cpp; path = ../src/qtff/coding.cpp; sourceTree = "<group>"; };
@@ -652,13 +708,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E17F31BC27A758DC00F7FBDF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E17F30BB27A755C200F7FBDF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -733,6 +782,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E17F31BC27A758DC00F7FBDF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -774,15 +830,30 @@
 				E17F2F1727A7459200F7FBDF /* qtff */,
 				E17F2F2F27A7460900F7FBDF /* 3gp.cpp */,
 				E17F2F5127A7460B00F7FBDF /* atom_ac3.cpp */,
+				A9180D8A2C2C7108007F6410 /* atom_alac.cpp */,
 				E17F2F7027A7460C00F7FBDF /* atom_amr.cpp */,
+				A9180D8C2C2C7115007F6410 /* atom_amve.cpp */,
+				A9180D8E2C2C711B007F6410 /* atom_av01.cpp */,
+				A9180D8F2C2C711B007F6410 /* atom_av1C.cpp */,
 				E17F2F4E27A7460A00F7FBDF /* atom_avc1.cpp */,
 				E17F2F8027A7460D00F7FBDF /* atom_avcC.cpp */,
+				A9180D922C2C7122007F6410 /* atom_avcE.cpp */,
+				A9180D942C2C7143007F6410 /* atom_c608.cpp */,
 				E17F2F5A27A7460B00F7FBDF /* atom_chpl.cpp */,
+				A9180D962C2C714C007F6410 /* atom_clap.cpp */,
+				A9180D982C2C7152007F6410 /* atom_clli.cpp */,
 				E17F2F7127A7460C00F7FBDF /* atom_colr.cpp */,
 				E17F2F4227A7460A00F7FBDF /* atom_d263.cpp */,
 				E17F2F7A27A7460C00F7FBDF /* atom_dac3.cpp */,
+				A9180D9A2C2C715D007F6410 /* atom_dec3.cpp */,
 				E17F2F4727A7460A00F7FBDF /* atom_damr.cpp */,
 				E17F2F6827A7460C00F7FBDF /* atom_dref.cpp */,
+				A9180D9D2C2C7168007F6410 /* atom_dvcC.cpp */,
+				A9180DA02C2C7168007F6410 /* atom_dvh1.cpp */,
+				A9180D9C2C2C7168007F6410 /* atom_dvhe.cpp */,
+				A9180D9F2C2C7168007F6410 /* atom_dvvC.cpp */,
+				A9180D9E2C2C7168007F6410 /* atom_dvwC.cpp */,
+				A9180DA62C2C7173007F6410 /* atom_eac3.cpp */,
 				E17F2F4F27A7460A00F7FBDF /* atom_elst.cpp */,
 				E17F2F5327A7460B00F7FBDF /* atom_enca.cpp */,
 				E17F2F5427A7460B00F7FBDF /* atom_encv.cpp */,
@@ -791,10 +862,15 @@
 				E17F2F3F27A7460A00F7FBDF /* atom_ftyp.cpp */,
 				E17F2F8227A7460D00F7FBDF /* atom_gmin.cpp */,
 				E17F2F7327A7460C00F7FBDF /* atom_hdlr.cpp */,
+				A9180DA82C2C7182007F6410 /* atom_hev1.cpp */,
 				E17F2F6F27A7460C00F7FBDF /* atom_hinf.cpp */,
 				E17F2F7E27A7460D00F7FBDF /* atom_hnti.cpp */,
 				E17F2F5E27A7460B00F7FBDF /* atom_href.cpp */,
+				A9180DAA2C2C718E007F6410 /* atom_hvc1.cpp */,
+				A9180DAB2C2C718E007F6410 /* atom_hvcC.cpp */,
+				A9180DAC2C2C718E007F6410 /* atom_hvcE.cpp */,
 				E17F2F3C27A7460900F7FBDF /* atom_mdat.cpp */,
+				A9180DBE2C2C71F1007F6410 /* atom_mdcv.cpp */,
 				E17F2F8A27A7460D00F7FBDF /* atom_mdhd.cpp */,
 				E17F2F4D27A7460A00F7FBDF /* atom_meta.cpp */,
 				E17F2F8E27A7460E00F7FBDF /* atom_mp4s.cpp */,
@@ -806,8 +882,10 @@
 				E17F2F7D27A7460D00F7FBDF /* atom_root.cpp */,
 				E17F2F2E27A7460900F7FBDF /* atom_rtp.cpp */,
 				E17F2F8727A7460D00F7FBDF /* atom_s263.cpp */,
+				A9180DB02C2C71A0007F6410 /* atom_sbgp.cpp */,
 				E17F2F5227A7460B00F7FBDF /* atom_sdp.cpp */,
 				E17F2F6027A7460B00F7FBDF /* atom_sdtp.cpp */,
+				A9180DB22C2C71A6007F6410 /* atom_sgpd.cpp */,
 				E17F2F6E27A7460C00F7FBDF /* atom_smi.cpp */,
 				E17F2F3E27A7460900F7FBDF /* atom_sound.cpp */,
 				E17F2F7927A7460C00F7FBDF /* atom_standard.cpp */,
@@ -817,6 +895,7 @@
 				E17F2F3527A7460900F7FBDF /* atom_stsd.cpp */,
 				E17F2F6227A7460B00F7FBDF /* atom_stsz.cpp */,
 				E17F2F3127A7460900F7FBDF /* atom_stz2.cpp */,
+				A9180DC02C2C7207007F6410 /* atom_tagc.cpp */,
 				E17F2F8F27A7460E00F7FBDF /* atom_text.cpp */,
 				E17F2F3327A7460900F7FBDF /* atom_tfhd.cpp */,
 				E17F2F5827A7460B00F7FBDF /* atom_tkhd.cpp */,
@@ -829,6 +908,11 @@
 				E17F2F8D27A7460E00F7FBDF /* atom_uuid.cpp */,
 				E17F2F6327A7460B00F7FBDF /* atom_video.cpp */,
 				E17F2F4527A7460A00F7FBDF /* atom_vmhd.cpp */,
+				A9180DB62C2C71BE007F6410 /* atom_vttC.cpp */,
+				A9180DB42C2C71BE007F6410 /* atom_vvc1.cpp */,
+				A9180DB52C2C71BE007F6410 /* atom_vvcC.cpp */,
+				A9180DB82C2C71BE007F6410 /* atom_vvic.cpp */,
+				A9180DB72C2C71BE007F6410 /* atom_wvtt.cpp */,
 				E17F2F8627A7460D00F7FBDF /* atoms.h */,
 				E17F2F3D27A7460900F7FBDF /* cmeta.cpp */,
 				E17F2F4C27A7460A00F7FBDF /* descriptors.cpp */,
@@ -1140,23 +1224,6 @@
 			productReference = E17F2FF527A74CAC00F7FBDF /* libmp4v2.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
-		E17F31BD27A758DC00F7FBDF /* libutil */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E17F31BF27A758DC00F7FBDF /* Build configuration list for PBXNativeTarget "libutil" */;
-			buildPhases = (
-				E17F31BA27A758DC00F7FBDF /* Headers */,
-				E17F31BB27A758DC00F7FBDF /* Sources */,
-				E17F31BC27A758DC00F7FBDF /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = libutil;
-			productName = libutil;
-			productReference = E17F31BE27A758DC00F7FBDF /* libutil.a */;
-			productType = "com.apple.product-type.library.static";
-		};
 		E17F30BD27A755C200F7FBDF /* mp4art */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E17F30C227A755C200F7FBDF /* Build configuration list for PBXNativeTarget "mp4art" */;
@@ -1330,13 +1397,31 @@
 			productReference = E17F316E27A757AE00F7FBDF /* mp4trackdump */;
 			productType = "com.apple.product-type.tool";
 		};
+		E17F31BD27A758DC00F7FBDF /* libutil */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E17F31BF27A758DC00F7FBDF /* Build configuration list for PBXNativeTarget "libutil" */;
+			buildPhases = (
+				E17F31BA27A758DC00F7FBDF /* Headers */,
+				E17F31BB27A758DC00F7FBDF /* Sources */,
+				E17F31BC27A758DC00F7FBDF /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = libutil;
+			productName = libutil;
+			productReference = E17F31BE27A758DC00F7FBDF /* libutil.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		5BDFC50718F4827900AD6054 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1240;
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1520;
 				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					E17F2FF427A74CAC00F7FBDF = {
@@ -1412,53 +1497,74 @@
 				E17F301227A74CD400F7FBDF /* atom_href.cpp in Sources */,
 				E17F301127A74CD400F7FBDF /* atom_stbl.cpp in Sources */,
 				E17F309927A74D2200F7FBDF /* FileSystem.cpp in Sources */,
+				A9180D9B2C2C715D007F6410 /* atom_dec3.cpp in Sources */,
 				E17F2FFB27A74CCA00F7FBDF /* 3gp.cpp in Sources */,
+				A9180DB12C2C71A0007F6410 /* atom_sbgp.cpp in Sources */,
+				A9180DBA2C2C71BE007F6410 /* atom_vvcC.cpp in Sources */,
 				E17F304E27A74CD400F7FBDF /* odcommands.cpp in Sources */,
+				A9180DC12C2C7207007F6410 /* atom_tagc.cpp in Sources */,
 				E17F302C27A74CD400F7FBDF /* atom_mp4v.cpp in Sources */,
 				E17F309B27A74D2200F7FBDF /* File_posix.cpp in Sources */,
 				E17F302927A74CD400F7FBDF /* atom_video.cpp in Sources */,
 				E17F2FFD27A74CD400F7FBDF /* atom_stsz.cpp in Sources */,
 				E17F305527A74CD400F7FBDF /* mp4.cpp in Sources */,
+				A9180D992C2C7153007F6410 /* atom_clli.cpp in Sources */,
 				E17F301627A74CD400F7FBDF /* atom_vmhd.cpp in Sources */,
 				E17F304127A74CD400F7FBDF /* atom_tfhd.cpp in Sources */,
 				E17F304927A74CD400F7FBDF /* atom_amr.cpp in Sources */,
+				A9180D912C2C711B007F6410 /* atom_av1C.cpp in Sources */,
 				E17F302627A74CD400F7FBDF /* atom_damr.cpp in Sources */,
 				E17F306627A74CDC00F7FBDF /* coding.cpp in Sources */,
 				E17F306327A74CDC00F7FBDF /* PictureAspectRatioBox.cpp in Sources */,
 				E17F303027A74CD400F7FBDF /* atom_smi.cpp in Sources */,
+				A9180DBB2C2C71BE007F6410 /* atom_vttC.cpp in Sources */,
 				E17F302427A74CD400F7FBDF /* atom_udta.cpp in Sources */,
 				E17F302227A74CD400F7FBDF /* atom_elst.cpp in Sources */,
+				A9180D972C2C714C007F6410 /* atom_clap.cpp in Sources */,
 				E17F2FFE27A74CD400F7FBDF /* atom_colr.cpp in Sources */,
 				E17F301E27A74CD400F7FBDF /* isma.cpp in Sources */,
 				E17F300027A74CD400F7FBDF /* atom_dac3.cpp in Sources */,
 				E17F302D27A74CD400F7FBDF /* atom_encv.cpp in Sources */,
 				E17F309627A74D1C00F7FBDF /* random_posix.cpp in Sources */,
 				E17F307027A74CE200F7FBDF /* type.cpp in Sources */,
+				A9180DB32C2C71A6007F6410 /* atom_sgpd.cpp in Sources */,
+				A9180DAE2C2C718E007F6410 /* atom_hvcC.cpp in Sources */,
 				E17F305327A74CD400F7FBDF /* mp4property.cpp in Sources */,
 				E17F300527A74CD400F7FBDF /* atom_urn.cpp in Sources */,
 				E17F308B27A74D0500F7FBDF /* time_posix.cpp in Sources */,
+				A9180DAD2C2C718E007F6410 /* atom_hvc1.cpp in Sources */,
+				A9180DAF2C2C718E007F6410 /* atom_hvcE.cpp in Sources */,
 				E17F2FFA27A74CCA00F7FBDF /* atom_ac3.cpp in Sources */,
+				A9180DA12C2C7168007F6410 /* atom_dvhe.cpp in Sources */,
 				E17F300227A74CD400F7FBDF /* atom_treftype.cpp in Sources */,
 				E17F305D27A74CD400F7FBDF /* mp4container.cpp in Sources */,
 				E17F302F27A74CD400F7FBDF /* atom_root.cpp in Sources */,
 				E17F305C27A74CD400F7FBDF /* atom_mp4s.cpp in Sources */,
 				E17F303627A74CD400F7FBDF /* atom_chpl.cpp in Sources */,
 				E17F300727A74CD400F7FBDF /* mp4file_io.cpp in Sources */,
+				A9180D8D2C2C7115007F6410 /* atom_amve.cpp in Sources */,
 				E17F302127A74CD400F7FBDF /* atom_avcC.cpp in Sources */,
 				E17F304D27A74CD400F7FBDF /* mp4info.cpp in Sources */,
+				A9180DBF2C2C71F1007F6410 /* atom_mdcv.cpp in Sources */,
+				A9180DA92C2C7182007F6410 /* atom_hev1.cpp in Sources */,
 				E17F303C27A74CD400F7FBDF /* atom_pasp.cpp in Sources */,
 				E17F306827A74CE200F7FBDF /* CoverArtBox.cpp in Sources */,
 				E17F305427A74CD400F7FBDF /* atom_text.cpp in Sources */,
 				E17F308A27A74D0500F7FBDF /* time.cpp in Sources */,
 				E17F307127A74CE200F7FBDF /* generic.cpp in Sources */,
 				E17F304327A74CD400F7FBDF /* atom_sdtp.cpp in Sources */,
+				A9180DBC2C2C71BF007F6410 /* atom_wvtt.cpp in Sources */,
 				E17F300127A74CD400F7FBDF /* atom_ftab.cpp in Sources */,
 				E17F303F27A74CD400F7FBDF /* atom_avc1.cpp in Sources */,
 				E17F300B27A74CD400F7FBDF /* atom_standard.cpp in Sources */,
+				A9180DA22C2C7168007F6410 /* atom_dvcC.cpp in Sources */,
 				E17F301F27A74CD400F7FBDF /* atom_d263.cpp in Sources */,
+				A9180D902C2C711B007F6410 /* atom_av01.cpp in Sources */,
 				E17F300427A74CD400F7FBDF /* mp4file.cpp in Sources */,
 				E17F302327A74CD400F7FBDF /* atom_hnti.cpp in Sources */,
+				A9180DBD2C2C71BF007F6410 /* atom_vvic.cpp in Sources */,
 				E17F307327A74CE800F7FBDF /* typebmff.cpp in Sources */,
+				A9180DB92C2C71BE007F6410 /* atom_vvc1.cpp in Sources */,
 				E17F306227A74CDC00F7FBDF /* ColorParameterBox.cpp in Sources */,
 				E17F301927A74CD400F7FBDF /* atom_gmin.cpp in Sources */,
 				E17F307927A74CF000F7FBDF /* other.cpp in Sources */,
@@ -1471,7 +1577,10 @@
 				E17F300D27A74CD400F7FBDF /* atom_mdat.cpp in Sources */,
 				E17F302E27A74CD400F7FBDF /* atom_ftyp.cpp in Sources */,
 				E17F306927A74CE200F7FBDF /* Tags.cpp in Sources */,
+				A9180D932C2C7122007F6410 /* atom_avcE.cpp in Sources */,
 				E17F303827A74CD400F7FBDF /* mp4atom.cpp in Sources */,
+				A9180D952C2C7143007F6410 /* atom_c608.cpp in Sources */,
+				A9180DA32C2C7168007F6410 /* atom_dvwC.cpp in Sources */,
 				E17F304B27A74CD400F7FBDF /* atom_uuid.cpp in Sources */,
 				E17F304A27A74CD400F7FBDF /* atom_mdhd.cpp in Sources */,
 				E17F309C27A74D2200F7FBDF /* File.cpp in Sources */,
@@ -1479,13 +1588,16 @@
 				E17F309E27A74D2200F7FBDF /* FileSystem_posix.cpp in Sources */,
 				E17F303127A74CD400F7FBDF /* atom_url.cpp in Sources */,
 				E17F304F27A74CD400F7FBDF /* rtphint.cpp in Sources */,
+				A9180DA42C2C7168007F6410 /* atom_dvvC.cpp in Sources */,
 				E17F304027A74CD400F7FBDF /* ocidescriptors.cpp in Sources */,
 				E17F301A27A74CD400F7FBDF /* atom_meta.cpp in Sources */,
 				E17F300827A74CD400F7FBDF /* atom_stsd.cpp in Sources */,
 				E17F300E27A74CD400F7FBDF /* atom_free.cpp in Sources */,
 				E17F308D27A74D0B00F7FBDF /* error.cpp in Sources */,
 				E17F302527A74CD400F7FBDF /* atom_ohdr.cpp in Sources */,
+				A9180DA52C2C7168007F6410 /* atom_dvh1.cpp in Sources */,
 				E17F309027A74D1100F7FBDF /* option.cpp in Sources */,
+				A9180D8B2C2C7108007F6410 /* atom_alac.cpp in Sources */,
 				E17F303D27A74CD400F7FBDF /* mp4track.cpp in Sources */,
 				E17F300C27A74CD400F7FBDF /* atom_mvhd.cpp in Sources */,
 				E17F305A27A74CD400F7FBDF /* descriptors.cpp in Sources */,
@@ -1499,20 +1611,12 @@
 				E17F303B27A74CD400F7FBDF /* cmeta.cpp in Sources */,
 				E17F301427A74CD400F7FBDF /* mp4descriptor.cpp in Sources */,
 				E17F305627A74CD400F7FBDF /* text.cpp in Sources */,
+				A9180DA72C2C7173007F6410 /* atom_eac3.cpp in Sources */,
 				E17F301027A74CD400F7FBDF /* log.cpp in Sources */,
 				E17F303E27A74CD400F7FBDF /* atom_trun.cpp in Sources */,
 				E17F304427A74CD400F7FBDF /* atom_tkhd.cpp in Sources */,
 				E17F307C27A74CF000F7FBDF /* TrackModifier.cpp in Sources */,
 				E17F2FFF27A74CD400F7FBDF /* atom_rtp.cpp in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E17F31BB27A758DC00F7FBDF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E17F31CA27A758FB00F7FBDF /* crc.cpp in Sources */,
-				E17F31CD27A758FB00F7FBDF /* Timecode.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1588,6 +1692,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E17F31BB27A758DC00F7FBDF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E17F31CA27A758FB00F7FBDF /* crc.cpp in Sources */,
+				E17F31CD27A758FB00F7FBDF /* Timecode.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1657,11 +1770,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
@@ -1669,7 +1785,10 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1703,11 +1822,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
@@ -1715,11 +1837,14 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					"NDEBUG",
+					NDEBUG,
 					"$(inherited)",
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1744,14 +1869,17 @@
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DYLIB_COMPATIBILITY_VERSION = 2;
 				DYLIB_CURRENT_VERSION = 2;
 				EXECUTABLE_PREFIX = lib;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACH_O_TYPE = mh_dylib;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1764,14 +1892,17 @@
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DYLIB_COMPATIBILITY_VERSION = 2;
 				DYLIB_CURRENT_VERSION = 2;
 				EXECUTABLE_PREFIX = lib;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACH_O_TYPE = mh_dylib;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1784,11 +1915,13 @@
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1800,11 +1933,13 @@
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				DEAD_CODE_STRIPPING = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1816,11 +1951,13 @@
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1832,11 +1969,13 @@
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				DEAD_CODE_STRIPPING = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1848,11 +1987,13 @@
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1864,11 +2005,13 @@
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				DEAD_CODE_STRIPPING = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1880,11 +2023,13 @@
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1896,11 +2041,13 @@
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				DEAD_CODE_STRIPPING = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1912,11 +2059,13 @@
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1928,11 +2077,13 @@
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				DEAD_CODE_STRIPPING = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1944,11 +2095,13 @@
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1960,11 +2113,13 @@
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				DEAD_CODE_STRIPPING = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1976,11 +2131,13 @@
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1992,11 +2149,13 @@
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				DEAD_CODE_STRIPPING = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2008,11 +2167,13 @@
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2024,11 +2185,13 @@
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				DEAD_CODE_STRIPPING = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2040,11 +2203,13 @@
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2056,11 +2221,13 @@
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				DEAD_CODE_STRIPPING = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2072,9 +2239,11 @@
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				EXECUTABLE_PREFIX = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
@@ -2090,10 +2259,12 @@
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				EXECUTABLE_PREFIX = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -2111,15 +2282,6 @@
 			buildConfigurations = (
 				5BDFC51118F4827900AD6054 /* Debug */,
 				5BDFC51218F4827900AD6054 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E17F31BF27A758DC00F7FBDF /* Build configuration list for PBXNativeTarget "libutil" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E17F31C027A758DC00F7FBDF /* Debug */,
-				E17F31C127A758DC00F7FBDF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2210,6 +2372,15 @@
 			buildConfigurations = (
 				E17F317327A757AE00F7FBDF /* Debug */,
 				E17F317427A757AE00F7FBDF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E17F31BF27A758DC00F7FBDF /* Build configuration list for PBXNativeTarget "libutil" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E17F31C027A758DC00F7FBDF /* Debug */,
+				E17F31C127A758DC00F7FBDF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
