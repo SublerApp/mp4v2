@@ -975,7 +975,6 @@ uint32_t MP4Track::GetMaxBitrate()
             bytesThisSec += sampleSize;
             bytesThisSec -= GetSampleSize(thisSecStartSid);
             thisSecStartSid++;
-            GetSampleTimes(thisSecStartSid, &thisSecStart, NULL);
             thisSecStart = sttsCache[thisSecStartSid];
         }
     }
