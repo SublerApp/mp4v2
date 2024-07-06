@@ -144,6 +144,10 @@ MP4Atom* MP4Atom::ReadAtom(MP4File& file, MP4Atom* pParentAtom)
     if (dataSize == 0) {
         // broken type
         if (ATOMID(type) == 0x00) {
+            ostringstream oss;
+            oss << "Invalid atom size in '" << type << "' atom, dataSize = " << dataSize;
+            log.errorf( "%s: \"%s\": %s", __FUNCTION__, file.GetFilename().c_str(), oss.str().c_str() );
+
             type[0] = 'f';
             type[1] = 'r';
             type[2] = 'e';
@@ -151,7 +155,7 @@ MP4Atom* MP4Atom::ReadAtom(MP4File& file, MP4Atom* pParentAtom)
 
             dataSize = 8;
             hdrSize = 8;
-            printf("Type = 0x00 data size: %lld, hdr size: %d\n", dataSize, hdrSize);
+
             invalidSize = true;
         }
     else
