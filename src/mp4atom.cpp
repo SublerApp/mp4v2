@@ -838,6 +838,11 @@ MP4Atom::factory( MP4File &file, MP4Atom* parent, const char* type )
                 if( strequal( type, *p ))
                     return new MP4UdtaElementAtom( file, type );
         }
+
+        if( descendsFrom( parent, "alac" )) {
+            if( ATOMID( ptype ) == ATOMID( "alac" ))
+                return new MP4ALACAtom( file );
+        }
     }
 
     // no-context construction (old-style)
@@ -851,7 +856,7 @@ MP4Atom::factory( MP4File &file, MP4Atom* parent, const char* type )
 
         case 'a':
             if( ATOMID(type) == ATOMID("alac") )
-                return new MP4ALACAtom( file );
+                return new MP4SoundAtom( file, type );
             if( ATOMID(type) == ATOMID("av01") )
                 return new MP4Av01Atom(file);
             if( ATOMID(type) == ATOMID("av1C") )
