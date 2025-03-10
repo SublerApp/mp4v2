@@ -51,6 +51,7 @@ public:
 
     static const string CODE_TRACKSUBTITLE;
     static const string CODE_SONGDESCRIPTION;
+    static const string CODE_DIRECTOR;
     static const string CODE_ARTDIRECTOR;
     static const string CODE_ARRANGER;
     static const string CODE_LYRICIST;
@@ -138,6 +139,7 @@ public:
 
     string trackSubTitle;
     string songDescription;
+    string director;
     string artDirector;
     string arranger;
     string lyricist;

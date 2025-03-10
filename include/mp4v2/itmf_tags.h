@@ -137,6 +137,7 @@ typedef struct MP4Tags_s
 
     const char* trackSubTitle;
     const char* songDescription;
+    const char* director;
     const char* artDirector;
     const char* arranger;
     const char* lyricist;

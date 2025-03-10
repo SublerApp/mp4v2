@@ -102,6 +102,7 @@ Tags::c_fetch( MP4Tags*& tags, MP4FileHandle hFile )
 
     fetchString(  cim, CODE_TRACKSUBTITLE,     trackSubTitle,     c.trackSubTitle );
     fetchString(  cim, CODE_SONGDESCRIPTION,   songDescription,   c.songDescription );
+    fetchString(  cim, CODE_DIRECTOR,          director,          c.director );
     fetchString(  cim, CODE_ARTDIRECTOR,       artDirector,       c.artDirector );
     fetchString(  cim, CODE_ARRANGER,          arranger,          c.arranger );
     fetchString(  cim, CODE_LYRICIST,          lyricist,          c.lyricist );
@@ -388,6 +389,7 @@ Tags::c_store( MP4Tags*& tags, MP4FileHandle hFile )
 
     storeString(  file, CODE_TRACKSUBTITLE,     trackSubTitle,     c.trackSubTitle );
     storeString(  file, CODE_SONGDESCRIPTION,   songDescription,   c.songDescription );
+    storeString(  file, CODE_DIRECTOR,          director,          c.director );
     storeString(  file, CODE_ARTDIRECTOR,       artDirector,       c.artDirector );
     storeString(  file, CODE_ARRANGER,          arranger,          c.arranger );
     storeString(  file, CODE_LYRICIST,          lyricist,          c.lyricist );
@@ -913,6 +915,7 @@ const string Tags::CODE_COMPILATION       = "cpil";
 
 const string Tags::CODE_TRACKSUBTITLE     = "\xa9" "st3";
 const string Tags::CODE_SONGDESCRIPTION   = "\xa9" "des";
+const string Tags::CODE_DIRECTOR          = "\xa9" "dir";
 const string Tags::CODE_ARTDIRECTOR       = "\xa9" "ard";
 const string Tags::CODE_ARRANGER          = "\xa9" "arg";
 const string Tags::CODE_LYRICIST          = "\xa9" "aut";
