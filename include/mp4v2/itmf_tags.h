@@ -189,6 +189,7 @@ typedef struct MP4Tags_s
     const char*          encodingTool;
     const char*          encodedBy;
     const char*          purchaseDate;
+    const char*          language;
 
     const uint8_t*       itunesu;
     const uint8_t*       podcast;
@@ -209,6 +210,7 @@ typedef struct MP4Tags_s
     const uint32_t*      genreID;
     const uint32_t*      composerID;
     const char*          xid;
+    const char*          asin;
 } MP4Tags;
 
 /** Allocate tags convenience structure for reading and settings tags.

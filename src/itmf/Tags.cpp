@@ -151,6 +151,7 @@ Tags::c_fetch( MP4Tags*& tags, MP4FileHandle hFile )
     fetchString(  cim, CODE_ENCODINGTOOL,      encodingTool,      c.encodingTool ); 
     fetchString(  cim, CODE_ENCODEDBY,         encodedBy,         c.encodedBy );
     fetchString(  cim, CODE_PURCHASEDATE,      purchaseDate,      c.purchaseDate );
+    fetchString(  cim, CODE_LANGUAGE,          language,          c.language );
 
     fetchInteger( cim, CODE_ITUNESU,           itunesu,           c.itunesu );
     fetchInteger( cim, CODE_PODCAST,           podcast,           c.podcast );
@@ -172,6 +173,7 @@ Tags::c_fetch( MP4Tags*& tags, MP4FileHandle hFile )
     fetchInteger( cim, CODE_GENREID,           genreID,           c.genreID );
     fetchInteger( cim, CODE_COMPOSERID,        composerID,        c.composerID );
     fetchString(  cim, CODE_XID,               xid,               c.xid );
+    fetchString(  cim, CODE_ASIN,              asin,              c.asin );
 
     genericItemListFree( itemList ); // free
 
@@ -438,6 +440,7 @@ Tags::c_store( MP4Tags*& tags, MP4FileHandle hFile )
     storeString(  file, CODE_ENCODINGTOOL,      encodingTool,      c.encodingTool );
     storeString(  file, CODE_ENCODEDBY,         encodedBy,         c.encodedBy );
     storeString(  file, CODE_PURCHASEDATE,      purchaseDate,      c.purchaseDate );
+    storeString(  file, CODE_LANGUAGE,          language,          c.language );
 
     storeInteger( file, CODE_ITUNESU,           itunesu,           c.itunesu );
     storeInteger( file, CODE_PODCAST,           podcast,           c.podcast );
@@ -459,6 +462,7 @@ Tags::c_store( MP4Tags*& tags, MP4FileHandle hFile )
     storeInteger( file, CODE_GENREID,           genreID,           c.genreID );
     storeInteger( file, CODE_COMPOSERID,        composerID,        c.composerID );
     storeString(  file, CODE_XID,               xid,               c.xid );
+    storeString(  file, CODE_ASIN,              asin,              c.asin );
 
     // destroy all cover-art then add each
     {
@@ -964,6 +968,7 @@ const string Tags::CODE_COPYRIGHT         = "cprt";
 const string Tags::CODE_ENCODINGTOOL      = "\xa9" "too";
 const string Tags::CODE_ENCODEDBY         = "\xa9" "enc";
 const string Tags::CODE_PURCHASEDATE      = "purd";
+const string Tags::CODE_LANGUAGE          = "language";
 
 const string Tags::CODE_ITUNESU           = "itnu";
 const string Tags::CODE_PODCAST           = "pcst";
@@ -984,6 +989,7 @@ const string Tags::CODE_PLAYLISTID        = "plID";
 const string Tags::CODE_GENREID           = "geID";
 const string Tags::CODE_COMPOSERID        = "cmID";
 const string Tags::CODE_XID               = "xid ";
+const string Tags::CODE_ASIN              = "asin";
 
 ///////////////////////////////////////////////////////////////////////////////
 

@@ -100,6 +100,7 @@ public:
     static const string CODE_ENCODINGTOOL;   
     static const string CODE_ENCODEDBY;
     static const string CODE_PURCHASEDATE;
+    static const string CODE_LANGUAGE;
 
     static const string CODE_ITUNESU;
     static const string CODE_PODCAST;
@@ -120,6 +121,7 @@ public:
     static const string CODE_GENREID;
     static const string CODE_COMPOSERID;
     static const string CODE_XID;
+    static const string CODE_ASIN;
 
 public:
     string      name;
@@ -190,6 +192,7 @@ public:
     string encodingTool;  
     string encodedBy;
     string purchaseDate;
+    string language;
 
     uint8_t itunesu;
     uint8_t podcast;
@@ -210,6 +213,7 @@ public:
     uint32_t genreID;
     uint32_t composerID;
     string   xid;
+    string   asin;
 
     bool     hasMetadata;
 
