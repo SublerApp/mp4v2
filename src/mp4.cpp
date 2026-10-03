@@ -2769,6 +2769,24 @@ MP4FileHandle MP4ModifyCallbacks(const MP4IOCallbacks* callbacks,
         return NULL;
     }
 
+    bool MP4SetTrackMediaDataName(
+        MP4FileHandle hFile, MP4TrackId trackId, const char *name, uint32_t index)
+    {
+        if (MP4_IS_VALID_FILE_HANDLE(hFile)) {
+            try {
+                return ((MP4File*)hFile)->SetTrackMediaDataName(trackId, name, index);
+            }
+            catch( Exception* x ) {
+                mp4v2::impl::log.errorf(*x);
+                delete x;
+            }
+            catch( ... ) {
+                mp4v2::impl::log.errorf( "%s: failed", __FUNCTION__ );
+            }
+        }
+        return false;
+    }
+
     bool MP4GetTrackMediaDataOriginalFormat(
         MP4FileHandle hFile, MP4TrackId trackId, char *originalFormat,
         uint32_t buflen)

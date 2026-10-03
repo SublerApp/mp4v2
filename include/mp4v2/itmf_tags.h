@@ -300,6 +300,7 @@ MP4V2_EXPORT bool MP4TagsSetCompilation       ( const MP4Tags*, const uint8_t* )
 
 MP4V2_EXPORT bool MP4TagsSetTrackSubTitle       ( const MP4Tags*, const char* );
 MP4V2_EXPORT bool MP4TagsSetSongDescription   ( const MP4Tags*, const char* );
+MP4V2_EXPORT bool MP4TagsSetDirector          ( const MP4Tags*, const char* );
 MP4V2_EXPORT bool MP4TagsSetArtDirector       ( const MP4Tags*, const char* );
 MP4V2_EXPORT bool MP4TagsSetArranger          ( const MP4Tags*, const char* );
 MP4V2_EXPORT bool MP4TagsSetLyricist          ( const MP4Tags*, const char* );

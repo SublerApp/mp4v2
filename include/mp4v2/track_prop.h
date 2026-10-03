@@ -90,6 +90,26 @@ const char* MP4GetTrackMediaDataName(
     MP4TrackId    trackId,
     uint32_t      index);
 
+/** Set the name of the track's media data atom.
+ *
+ *  MP4SetTrackMediaDataName sets the four character name of the specified
+ *  track's media data atom, i.e. the child atom of the track's @b stsd atom.
+ *
+ *  @param hFile specifies the mp4 file to which the operation applies.
+ *  @param trackId specifies the track for which the media data atom name is
+ *      changed.
+ *  @param name specifies the four character media data atom name.
+ *  @param index specifies the sample description index.
+ *
+ *  @return <b>true</b> on success, <b>false</b> on failure.
+ */
+MP4V2_EXPORT
+bool MP4SetTrackMediaDataName(
+    MP4FileHandle hFile,
+    MP4TrackId    trackId,
+    const char*   name,
+    uint32_t      index);
+
 /** Get the name of an encrypted track's original media data atom.
  *
  *  MP4GetTrackMediaDataOriginalFormat is used to get the original media data

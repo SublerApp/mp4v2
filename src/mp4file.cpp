@@ -4264,6 +4264,28 @@ const char *MP4File::GetTrackMediaDataName (MP4TrackId trackId, uint32_t index)
     return pChild->GetType();
 }
 
+bool MP4File::SetTrackMediaDataName(MP4TrackId trackId, const char *name, uint32_t index)
+{
+    if (name == NULL || strlen(name) != 4)
+        return false;
+
+    MP4Atom *pAtom =
+        FindAtom(MakeTrackName(trackId,
+                               "mdia.minf.stbl.stsd"));
+    if (pAtom == NULL)
+        return false;
+
+    uint32_t numAtoms = pAtom->GetNumberOfChildAtoms();
+    if (index >= numAtoms) {
+        log.errorf("%s: \"%s\": track %d has no atom at index %d",
+                   __FUNCTION__, GetFilename().c_str(), trackId, index);
+        return false;
+    }
+
+    pAtom->GetChildAtom(index)->SetType(name);
+    return true;
+}
+
 
 uint32_t MP4File::GetTrackTimeScale(MP4TrackId trackId)
 {
